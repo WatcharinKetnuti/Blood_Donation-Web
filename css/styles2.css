@@ -1,0 +1,76 @@
+.color-note{
+    color: 
+    #B79455 5%
+    #8A0302 5%
+    #FCFCFC 15%
+    #A41214 25%
+    #070603 50%
+
+} 
+
+ .header{
+    background-color: #D33838;
+ }
+ 
+ .text-white{
+    color: white;
+ }
+
+
+
+
+.mybutton-red{
+    background-color: red;
+    color: white;
+    padding: 3px 7px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 5%;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+    text-decoration: none;
+}
+
+.mybutton-red:hover{
+    background-color: red;
+    color: white;
+    padding: 3px 7px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 5%;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.5;
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+
+
+.mybutton-red2{
+    background-color: #D33838;
+    color: white;
+    padding: 3px 7px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 5%;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+    text-decoration: none;
+}
+
+.mybutton-red2:hover{
+    background-color: #D33838;
+    color: white;
+    padding: 3px 7px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 5%;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.5;
+    transition: 0.3s;
+    text-decoration: none;
+}

@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <?php
 include('../db/db.php');
 include('../component/header.php');

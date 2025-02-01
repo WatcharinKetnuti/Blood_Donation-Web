@@ -3,7 +3,7 @@
 // $link= mysqli_connect('it.e-tech.ac.th','web22','4409','web22_resblood');
 
 session_start();
-$link = mysqli_connect('localhost','root','','blood_donation');
+$link = mysqli_connect('localhost','root','','blood_donation') or die('Cannot database!');
 date_default_timezone_set('Asia/Bangkok');
 mysqli_set_charset ($link,'utf8');
 
