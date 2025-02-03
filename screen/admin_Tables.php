@@ -15,7 +15,7 @@ include('../component/header.php');
                     <div class="container-fluid px-4">
                         <h1 class="mt-4">Admin Data</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="index.html">Add</a></li>
+                            <li class="breadcrumb-item"><a href="admin_Form.php">Add</a></li>
                             <li class="breadcrumb-item active">Tables</li>
                         </ol>
                        
