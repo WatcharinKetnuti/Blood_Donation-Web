@@ -51,7 +51,7 @@ include('../component/header.php');
                                                     echo "<td>".$row['admin_level']."</td>";
                                                     echo "<td>
                                                     <a class='mybutton-red2' href='admin_Form.php?id=".$row['admin_id']."'>Edit</a>
-                                                    <a class='mybutton-red' href='admin_controller.php?id=".$row['admin_id']."' >Delete</a>
+                                                    <a class='mybutton-red' href='../Action/admin_Delete.php?id=".$row['admin_id']."' >Delete</a>
                                                     </td>";
                                                     echo "</tr>";
                                                 }

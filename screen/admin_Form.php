@@ -31,7 +31,7 @@ $data = null;
                         </h3>
                     </div>
                     <div class="card-body">
-                        <form action="../db/admin_Add-Update.php" method="POST">
+                        <form action="../Action/admin_Add-Update.php" method="POST">
                             <?php
                             if($id != null)
                             {
@@ -65,10 +65,21 @@ $data = null;
                             <div class="form-floating mb-3">
                                 <select class="form-select" name="adminLevel" id="inputLevel" aria-label="Floating label select example">
                                     <option value="<?php if($data != null)echo $data['admin_level'] ?>">
-                                        <?php if($data != null)echo $data['admin_level'] ?>
+                                        <?php if($data != null)
+                                        {
+                                            if($data['admin_level'] == 'A')
+                                            {
+                                                echo "Administrator";
+                                            }
+                                            else
+                                            {
+                                                echo "Schedule Manager";
+                                            }
+                                        }
+                                        ?>
                                     </option>
-                                    <option value="1">Administrator</option>
-                                    <option value="2">Schedule Manager</option>
+                                    <option value="A">Administrator</option>
+                                    <option value="M">Schedule Manager</option>
                                 </select>
                                 <label for="inputUsername">Admin Level</label>
                             </div>
@@ -86,8 +97,8 @@ $data = null;
                                     <?php echo $_SESSION['error']; ?>
                                 </p>
                             <?php
-                            }
                             unset($_SESSION['error']);
+                            }
                             ?>
                         </div>
                     </div>
@@ -98,5 +109,6 @@ $data = null;
 </main>
 
 <?php
+
 include('../component/footer.php');
 ?>
