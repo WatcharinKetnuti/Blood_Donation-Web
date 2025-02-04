@@ -1,9 +1,7 @@
-<!DOCTYPE html>
-<!DOCTYPE html>
 <?php
 include('../db/db.php');
 include('../component/header.php');
-
+include('../component/modal.php');
 
 // if($_SESSION['user'] == "")
 // {
@@ -15,8 +13,7 @@ include('../component/header.php');
                     <div class="container-fluid px-4">
                         <h1 class="mt-4">Admin Data</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="admin_Form.php">Add</a></li>
-                            <li class="breadcrumb-item active">Tables</li>
+                            <li class="breadcrumb-item"><a class="btn add-btn" href="admin_Form.php">Add</a></li>
                         </ol>
                        
                         <div class="card mb-4">
@@ -50,8 +47,8 @@ include('../component/header.php');
                                                     echo "<td>".$row['admin_password']."</td>";
                                                     echo "<td>".$row['admin_level']."</td>";
                                                     echo "<td>
-                                                    <a class='mybutton-red2' href='admin_Form.php?id=".$row['admin_id']."'>Edit</a>
-                                                    <a class='mybutton-red' href='../Action/admin_Delete.php?id=".$row['admin_id']."' >Delete</a>
+                                                    <a class='btn edit-btn' href='admin_Form.php?id=".$row['admin_id']."'>Edit</a>
+                                                    <button class='btn delete-btn' data-bs-toggle='modal' data-bs-target='#exampleModal' data-href='../Action/admin_Delete.php?id=".$row['admin_id']." '>Delete</button>
                                                     </td>";
                                                     echo "</tr>";
                                                 }
