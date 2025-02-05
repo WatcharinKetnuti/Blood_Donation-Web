@@ -47,7 +47,7 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Admin
                             </a>
-                            <a class="nav-link" href="index.html">
+                            <a class="nav-link" href="../screen/member_Table.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Member
                             </a>
