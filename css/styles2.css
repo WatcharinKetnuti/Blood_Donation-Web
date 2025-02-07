@@ -75,8 +75,10 @@
     text-decoration: none;
 }
 
-
-
+.child-align-end{
+    display: flex;
+    justify-content: flex-end;
+}
 
 .btn {
     padding: 3px 7px;
