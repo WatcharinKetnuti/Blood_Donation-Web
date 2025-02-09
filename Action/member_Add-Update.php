@@ -3,17 +3,26 @@ include('../db/db.php');
 
 if(empty($_POST['id']))
 {
-    if(empty($_POST['username']) || empty($_POST['password']) || empty($_POST['memberLevel']))
+    if(empty($_POST['fname']) || empty($_POST['lname']) || empty($_POST['email']) || empty($_POST['password']) || empty($_POST['Tel']) || empty($_POST['blood_type']) || 
+    empty($_POST['birthdate']) )
     {
         $_SESSION['error']="กรุณากรอกข้อมูลให้ครบ";
         header('location:../screen/member_Form.php');
         exit();
     }
 
-    $sql = "select * from member where member_username = '{$_POST['username']}'";
+    $sql = "select * from member where member_email = '{$_POST['email']}'";
     if(get($sql))
     {
-        $_SESSION['error']="มีชื่อผู้ใช้นี้อยู่ในระบบแล้ว";
+        $_SESSION['error']="มีอีเมลนี้อยู่ในระบบแล้ว";
+        header('location:../screen/member_Form.php');
+        exit();
+    }
+
+    $sql = "select * from member where member_tel = '{$_POST['Tel']}'";
+    if(get($sql))
+    {
+        $_SESSION['error']="มีเบอร์โทรศัพท์นี้อยู่ในระบบแล้ว";
         header('location:../screen/member_Form.php');
         exit();
     }
@@ -23,15 +32,34 @@ if(empty($_POST['id']))
 
 if($_POST['id'] != null)
 {
-    if(empty($_POST['username']) || empty($_POST['memberLevel']))
+    if(empty($_POST['fname']) || empty($_POST['lname']) || empty($_POST['email']) || empty($_POST['Tel']) || empty($_POST['blood_type']) || empty($_POST['birthdate']))
     {
         $_SESSION['error']="กรุณากรอกข้อมูลให้ครบ";
         header('location:../screen/member_Form.php?id='.$_POST['id']);
         exit();
     }
+
+    $sql = "select member_email, member_tel from member where member_id != '{$_POST['id']}'";
+    $result = get($sql);
+    foreach($result as $row)
+    {
+        if($row['member_email'] == $_POST['email'])
+        {
+            $_SESSION['error']="มีอีเมลนี้อยู่ในระบบแล้ว";
+            header('location:../screen/member_Form.php?id='.$_POST['id']);
+            exit();
+        }
+        if($row['member_tel'] == $_POST['Tel'])
+        {
+            $_SESSION['error']="มีเบอร์โทรศัพท์นี้อยู่ในระบบแล้ว";
+            header('location:../screen/member_Form.php?id='.$_POST['id']);
+            exit();
+        }
+    }
+
 }
 
-if($_POST['password'] != null && $_POST['confirm-password'] != null)
+if($_POST['password'] != null || $_POST['confirm-password'] != null)
 {
     if($_POST['password'] != $_POST['confirm-password'])
     {
@@ -58,40 +86,51 @@ if(empty($_POST['id']))
     if($result)
     {
         $lastId = $result[0]['member_id'];
-        $number = (int)substr($lastId, 5);
+        $number = (int)substr($lastId, 3);
         $number++;
     }
     else
     {
         $number = 1;
     }
-    $ID = 'member' . str_pad($number, 4, '0', STR_PAD_LEFT);
+    $ID = 'mem' . str_pad($number, 7, '0', STR_PAD_LEFT);
 
-    $sql = "INSERT INTO `member`(`member_id`, `member_username`, `member_password`, `member_level`) VALUES 
+    $sql = "INSERT INTO `member`(`member_id`, `member_fname`, `member_lname`, `member_birth_date`, `member_tel`, `member_blood_type`, `member_email`, `member_password`) VALUES
     (
      '$ID',
-     '{$_POST['username']}',
-     '{$_POST['password']}',
-     '{$_POST['memberLevel']}'
-    )
-    ";
+     '{$_POST['fname']}',
+     '{$_POST['lname']}',
+     '{$_POST['birthdate']}',
+     '{$_POST['Tel']}',
+     '{$_POST['blood_type']}',
+     '{$_POST['email']}',
+     '{$_POST['password']}'
+    )";
 }
 else
 {
     if($_POST['password'] == null)
     {
         $sql = "UPDATE member set 
-        `member_username`='{$_POST['username']}',
-        `member_level`='{$_POST['memberLevel']}'
-        WHERE member_id = '{$_POST['id']}' " ;
+        member_fname = '{$_POST['fname']}',
+        member_lname = '{$_POST['lname']}',
+        member_email = '{$_POST['email']}',
+        member_tel = '{$_POST['Tel']}',
+        member_blood_type = '{$_POST['blood_type']}',
+        member_birth_date = '{$_POST['birthdate']}'
+        WHERE member_id = '{$_POST['id']}'";
     }
     else
     {
         $sql = "UPDATE member set 
-        `member_username`='{$_POST['username']}',
-        `member_password`='{$_POST['password']}',
-        `member_level`='{$_POST['memberLevel']}'
-        WHERE member_id = '{$_POST['id']}' " ;
+        member_fname = '{$_POST['fname']}',
+        member_lname = '{$_POST['lname']}', 
+        member_email = '{$_POST['email']}',
+        member_password = '{$_POST['password']}',
+        member_tel = '{$_POST['Tel']}',
+        member_blood_type = '{$_POST['blood_type']}', 
+        member_birth_date = '{$_POST['birthdate']}'
+        WHERE member_id = '{$_POST['id']}'";
     }
 }
 
@@ -109,7 +148,7 @@ $set = set($sql);
 if($set == true)
 {
     $_SESSION['message']="complete";
-    header('location:../screen/member_Tables.php');
+    header('location:../screen/member_Table.php');
 }
 else
 {

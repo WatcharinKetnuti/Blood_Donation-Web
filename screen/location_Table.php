@@ -27,7 +27,7 @@ include('../component/modal.php');
                                         <tr>
                                             <th>ID</th>
                                             <th>Name</th>
-                                            <th>Detail</th>
+                                            <th class="detail-column">Detail</th>
                                             <th></th>
                                         </tr>
                                     </thead>
@@ -43,7 +43,7 @@ include('../component/modal.php');
                                                     echo "<tr>";
                                                     echo "<td>".$row['location_id']."</td>";
                                                     echo "<td>".$row['location_name']."</td>";
-                                                    echo "<td>".$row['location_detail']."</td>";
+                                                    echo "<td class='detail-column'> ".$row['location_detail']."</td>";
                                                     echo "<td>
                                                     <a class='btn edit-btn' href='location_Form.php?id=".$row['location_id']."'>Edit</a>
                                                     

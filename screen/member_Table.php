@@ -46,7 +46,7 @@ include('../component/modal.php');
                                                     echo "<tr>";
                                                     echo "<td>".$row['member_id']."</td>";
                                                     echo "<td>".$row['member_fname']." ".$row['member_lname']."</td>";
-                                                    echo "<td>".$row['member_blood_type']."</td>";
+                                                    echo "<td>".$row['member_birth_date']."</td>";
                                                     echo "<td>".$row['member_tel']."</td>";
                                                     echo "<td>".$row['member_blood_type']."</td>";
                                                     echo "<td>".$row['member_email']."</td>";

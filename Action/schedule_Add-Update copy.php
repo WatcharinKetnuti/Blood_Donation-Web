@@ -2,7 +2,12 @@
 include('../db/db.php');
 
 
-if(empty($_POST['name']) || empty($_POST['detail']))
+if(empty($_POST['startdate']) || empty($_POST['EndDate']) || empty($_POST['StartTime']) || empty($_POST['EndTime']) || empty($_POST['detail']))
+{
+    $_SESSION['error']="กรุณากรอกข้อมูลให้ครบ";
+    header('location:../screen/schedule_Form.php');
+    exit();
+}
 {
     $_SESSION['error']="กรุณากรอกข้อมูลให้ครบ";
     header('location:../screen/location_Form.php');
@@ -26,7 +31,7 @@ if($_POST['id'] != null)
     $result = get($sql);
     foreach($result as $row)
     {
-        if($row['location_name'] == $_POST['name'])
+        if($row['admin_username'] == $_POST['username'])
         {
             $_SESSION['error']="มีสถานที่นี้อยู่ในระบบแล้ว";
             header('location:../screen/location_Form.php?id='.$_POST['id']);

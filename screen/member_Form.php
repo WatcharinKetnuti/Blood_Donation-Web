@@ -58,7 +58,7 @@ $data = null;
                                 </div>
                             </div>
                             <div class="form-floating mb-3">
-                                <input class="form-control" name="Email" id="" type="text" placeholder="" value="<?php if($data != null)echo $data['member_email'] ?>" />
+                                <input class="form-control" name="email" id="" type="email" placeholder="" value="<?php if($data != null)echo $data['member_email'] ?>" />
                                 <label for="Email">Email</label>
                             </div>
                             <div class="row mb-3">
@@ -78,13 +78,19 @@ $data = null;
                             <div class="row mb-3">
                                 <div class="col-md-6">
                                     <div class="form-floating mb-3 mb-md-0">
-                                        <input class="form-control" name="Tel" id="Tel" type="tel" placeholder="Phone number" />
+                                        <input class="form-control" name="birthdate" id="birthdate" type="date" placeholder="Birth date" value="<?=$data['member_birth_date']?? '' ?>" />
+                                        <label for="birthdate">Birth Date</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-floating mb-3 mb-md-0">
+                                        <input class="form-control" name="Tel" id="Tel" type="tel" placeholder="Phone number" value="<?=$data['member_tel']?? '' ?>" />
                                         <label for="Tel">Tel</label>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-3">
                                     <div class="form-floating mb-3 mb-md-0">
-                                        <select class="form-select" name="blood_type" id="blood_type" aria-label="Floating label select example">
+                                        <select class="form-select" name="blood_type" id="blood_type" aria-label="Floating label select example" value="<?=$data['member_blod_type']?? '' ?>>
                                             <option value="<?php if($data != null)echo $data['member_blood_type'] ?>">
                                                 
                                             </option>

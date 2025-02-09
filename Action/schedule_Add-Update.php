@@ -1,62 +1,26 @@
 <?php
 include('../db/db.php');
 
+// var_dump($_POST);
+// exit();
 
-if(empty($_POST['startdate']) || empty($_POST['EndDate']) || empty($_POST['StartTime']) || empty($_POST['EndTime']) || empty($_POST['detail']))
-{
-    $_SESSION['error']="กรุณากรอกข้อมูลให้ครบ";
+if(empty($_POST['StartDate']) || empty($_POST['EndDate']) || empty($_POST['StartTime']) || empty($_POST['EndTime']) || empty($_POST['detail']) || empty($_POST['blood_type']) || empty($_POST['Status']) || empty($_POST['Location']))
+{ 
+    $_SESSION['error'] = "กรุณากรอกข้อมูลให้ครบ";
     header('location:../screen/schedule_Form.php');
     exit();
 }
-{
-    $_SESSION['error']="กรุณากรอกข้อมูลให้ครบ";
-    header('location:../screen/location_Form.php');
-    exit();
-}
+
+
+$blood_types = implode(',', $_POST['blood_type']);
 
 if(empty($_POST['id']))
 {
-    $sql = "select * from location where location_name = '{$_POST['name']}'";
-    if(get($sql))
-    {
-        $_SESSION['error']="มีสถานที่นี้อยู่ในระบบแล้ว";
-        header('location:../screen/location_Form.php');
-        exit();
-    }
-}
-
-if($_POST['id'] != null)
-{
-    $sql = "select location_name from location where location_id != '{$_POST['id']}'";
-    $result = get($sql);
-    foreach($result as $row)
-    {
-        if($row['admin_username'] == $_POST['username'])
-        {
-            $_SESSION['error']="มีสถานที่นี้อยู่ในระบบแล้ว";
-            header('location:../screen/location_Form.php?id='.$_POST['id']);
-            exit();
-        }
-    }
-}
-
-
-
-
-// echo $ID;
-// exit();
-
-
-
-
-
-if(empty($_POST['id']))
-{
-    $sql = "select location_id from location order by location_id desc limit 1";
+    $sql = "SELECT schedule_id FROM schedule ORDER BY schedule_id DESC LIMIT 1";
     $result = get($sql);
     if($result)
     {
-        $lastId = $result[0]['location_id'];
+        $lastId = $result[0]['schedule_id'];
         $number = (int)substr($lastId, 3);
         $number++;
     }
@@ -64,41 +28,48 @@ if(empty($_POST['id']))
     {
         $number = 1;
     }
-    $ID = 'loc' . str_pad($number, 6, '0', STR_PAD_LEFT);
+    $ID = 'sch' . str_pad($number, 6, '0', STR_PAD_LEFT);
 
-    $sql = "INSERT INTO location (`location_id`, `location_name`, `location_detail`) VALUES 
+    $sql = "INSERT INTO schedule (`schedule_id`, `schedule_start_date`, `schedule_end_date`, `schedule_start_time`, `schedule_end_time`, `schedule_detail`, `schedule_blood_type`, `schedule_status`, `location_id`,`admin_id` ) VALUES 
     (
      '$ID',
-     '{$_POST['name']}',
-     '{$_POST['detail']}'
+     '{$_POST['StartDate']}',
+     '{$_POST['EndDate']}',
+     '{$_POST['StartTime']}',
+     '{$_POST['EndTime']}',
+     '{$_POST['detail']}',
+     '$blood_types',
+     '{$_POST['Status']}',
+     '{$_POST['Location']}',
+     'admin0001'
     )";
 }
 else
 {
-    $sql = "UPDATE `location` SET 
-    `location_name`='{$_POST['name']}',
-    `location_detail`='{$_POST['detail']}'
-    WHERE location_id = '{$_POST['id']}'";
+    $sql = "UPDATE `schedule` SET 
+    `schedule_start_date`='{$_POST['StartDate']}',
+    `schedule_end_date`='{$_POST['EndDate']}',
+    `schedule_start_time`='{$_POST['StartTime']}',
+    `schedule_end_time`='{$_POST['EndTime']}',
+    `schedule_detail`='{$_POST['detail']}',
+    `schedule_blood_type`='$blood_types',
+    `schedule_status`='{$_POST['Status']}',
+    `location_id`='{$_POST['Location']}'
+    WHERE schedule_id = '{$_POST['id']}'";
 }
 
 $set = set($sql);
 
-// var_dump($sql);
-// var_dump($set);
-// exit();
-
 if($set == true)
 {
-    $_SESSION['message']="complete";
-    header('location:../screen/location_Table.php');
+    $_SESSION['message'] = "complete";
+    header('location:../screen/schedule_Table.php');
 }
 else
 {
     echo $sql;
     exit();
-    $_SESSION['error']="Error from database"; 
-    header('location:../screen/location_Form.php');
+    $_SESSION['error'] = "Error from database"; 
+    header('location:../screen/schedule_Form.php');
 }
-
-
 ?>

@@ -2,7 +2,6 @@
 include('../db/db.php');
 include('../component/header.php');
 
-
 // if($_SESSION['user'] == "")
 // {
 // 	header("Schedule: login.php");
@@ -10,6 +9,10 @@ include('../component/header.php');
 
 $id = isset($_GET['id']) ? $_GET['id'] : null;
 $data = null;
+$A = null;
+$B = null;
+$AB = null;
+$O = null;
 ?>
 <main>
     <div class="container">
@@ -35,11 +38,17 @@ $data = null;
                             <?php
                             if($id != null)
                             {
-                                $sql = "SELECT * FROM schedule left join location on schedule.location_id = location.location_id";
+                                $sql = "SELECT * FROM schedule left join location on schedule.location_id = location.location_id where schedule_id ='$id'";
                                 $get = get($sql);
                                 $data = $get[0];
 
                                 echo "<input value='".$data['schedule_id']."' type='hidden' name='id'>";
+
+                                $blood = explode(",",$data['schedule_blood_type']);
+                                $A = in_array("A",$blood) ;
+                                $B = in_array("B",$blood) ;
+                                $AB = in_array("AB",$blood) ;
+                                $O = in_array("O",$blood) ;
                             }
                             ?>
                             
@@ -82,22 +91,44 @@ $data = null;
                             <div class="row mb-3">
                                 <div class="col-md-3">
                                     <div class="form-floating mb-3 mb-md-0">
-                                        <select class="form-select" name="blood_type" id="blood_type" aria-label="Floating label select example">
-                                            <option value="<?=$data['schedule_blood_type']??''?>">
-                                                ทุกกรุ๊ปเลือด
-                                            </option>
-                                            <option value="A">A</option>
-                                            <option value="B">B</option>
-                                            <option value="AB">AB</option>
-                                            <option value="O">O</option>
-                                        </select>
-                                        <label for="inputUsername">Blood type</label>
+                                        <div class="dropdown">
+                                            <button class="form-select " type="button" id="bloodTypeDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                                Blood type
+                                            </button>
+                                            <ul class="dropdown-menu" aria-labelledby="bloodTypeDropdown">
+                                                <li>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" name="blood_type[]" value="A" <?= $A? 'checked' : '' ?>>
+                                                        <label class="form-check-label">A</label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" name="blood_type[]" value="B" <?= $B? 'checked' : '' ?>>
+                                                        <label class="form-check-label">B</label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" name="blood_type[]" value="AB" <?= $AB? 'checked' : '' ?>>
+                                                        <label class="form-check-label">AB</label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" name="blood_type[]" value="O" <?= $O? 'checked' : '' ?>>
+                                                        <label class="form-check-label">O</label>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-floating mb-3 mb-md-0">
                                         <select class="form-select" name="Status" id="Status" aria-label="Floating label select example">
-                                            <option value="<?=$data['schedule_status']??''?>">
+                                            <option value="<?=$data['schedule_status']?? ''?>">
                                                 <?php
                                                 if($data != null)
                                                 {
@@ -116,9 +147,9 @@ $data = null;
                                                 }
                                                 ?>
                                             </option>
-                                            <option value="E">Enable | เปิดจอง</option>
-                                            <option value="D">Disable | ปิดจอง</option>
-                                            <?php if($data != null)echo '<option value="C">Cancel | ยกเลิกกำหนดการ</option>' ?>">
+                                            <option value="E">Enable</option>
+                                            <option value="D">Disable</option>
+                                            <?php if($data != null)echo '<option value="C">Cancel</option>' ?>
                                             
                                         </select>
                                         <label for="inputUsername">Status</label>
