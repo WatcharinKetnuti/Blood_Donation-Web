@@ -3,7 +3,7 @@
 // $link= mysqli_connect('it.e-tech.ac.th','web22','4409','web22_resblood');
 
 session_start();
-$link = mysqli_connect('localhost','root','','blood_donation') or die('Cannot database!');
+$link = mysqli_connect('localhost','root','','blood_donation') or die('Cannot database');
 date_default_timezone_set('Asia/Bangkok');
 mysqli_set_charset ($link,'utf8');
 
@@ -22,19 +22,28 @@ function set($sql)
     
 }
 
+// function authen()
+// {
+// 	return $_SESSION['user']?? false;
+// }
+
 function authen()
 {
-	return $_SESSION['user']?? false;
+    if(!isset($_SESSION['user']) )
+    {
+        header("../screen/login.php");
+    }
 }
-function type($data)
-{
-	$authen= authen();
-	return $authen[$data]?? '';
-}
+
+// function type($data)
+// {
+// 	$authen= authen();
+// 	return $authen[$data]?? '';
+// }
 
 function data($data)
 {
-	return $_SESSION['data'][$data]?? '';
+	return $_SESSION['user'][$data]?? '';
 }
 
 ?>

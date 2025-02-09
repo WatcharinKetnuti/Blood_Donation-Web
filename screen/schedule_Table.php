@@ -71,7 +71,6 @@ include('../component/modal.php');
                                                     
                                                     echo "<td>
                                                     <a class='btn edit-btn' href='schedule_Form.php?id=".$row['schedule_id']."'>Edit</a>
-                                                    <button class='btn delete-btn' data-bs-toggle='modal' data-bs-target='#exampleModal' data-href='../Action/location_Delete.php?id=".$row['schedule_id']." '>Delete</button>
                                                     </td>";
                                                     echo "</tr>";
                                                 }
