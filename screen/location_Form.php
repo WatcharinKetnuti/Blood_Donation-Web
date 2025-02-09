@@ -31,7 +31,7 @@ $data = null;
                         </h3>
                     </div>
                     <div class="card-body">
-                        <form action="../Action/Location_Add-Update.php" method="POST">
+                        <form action="../Action/location_Add-Update.php" method="POST">
                             <?php
                             if($id != null)
                             {
@@ -49,7 +49,7 @@ $data = null;
                                 <label for="inputName">Name</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <textarea rows="6" class="form-control" style="height:100%;"  name="detail" id="" type="text" placeholder="" value="<?php if($data != null)echo $data['location_detail'] ?>" ></textarea>
+                                <textarea rows="6" class="form-control" style="height:100%;"  name="detail" id="" type="text" placeholder="" value="" ><?=$data['location_detail']??'' ?></textarea>
                                 <label for="inputDetail">Detail</label>
                             </div>
                             

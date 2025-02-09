@@ -52,7 +52,7 @@ include('../component/modal.php');
                                                     echo "<td>".$row['member_email']."</td>";
                                                     echo "<td>
                                                     <a class='btn edit-btn' href='member_Form.php?id=".$row['member_id']."'>Edit</a>
-                                                    <button class='btn delete-btn' data-bs-toggle='modal' data-bs-target='#exampleModal' data-href='../Action/member_Delete.php?id=".$row['member_id']." '>Delete</button>
+                                                    
                                                     </td>";
                                                     echo "</tr>";
                                                 }

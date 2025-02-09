@@ -9,12 +9,12 @@ $set = set($sql);
 if($set == true)
 {
     $_SESSION['message']="complete";
-    header('location:../screen/admin_Tables.php');
+    header('location:../screen/admin_Table.php');
 }
 else
 {
     $_SESSION['message']="fail";
-    header('location:../screen/admin_Tables.php');
+    header('location:../screen/admin_Tables=.php');
 }
 
 

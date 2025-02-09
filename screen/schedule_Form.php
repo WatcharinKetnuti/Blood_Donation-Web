@@ -84,7 +84,7 @@ $data = null;
                                     <div class="form-floating mb-3 mb-md-0">
                                         <select class="form-select" name="blood_type" id="blood_type" aria-label="Floating label select example">
                                             <option value="<?=$data['schedule_blood_type']??''?>">
-                                                
+                                                ทุกกรุ๊ปเลือด
                                             </option>
                                             <option value="A">A</option>
                                             <option value="B">B</option>
@@ -124,7 +124,7 @@ $data = null;
                                         <label for="inputUsername">Status</label>
                                     </div>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-6">
                                     <div class="form-floating mb-3 mb-md-0">
                                         <select class="form-select" name="Location" id="blood_type" aria-label="Floating label select example">
                                             <option value="<?=$data['location_id']??''?>">

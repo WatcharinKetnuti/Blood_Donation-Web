@@ -12,9 +12,7 @@ include('../component/modal.php');
                 <main>
                     <div class="container-fluid px-4">
                         <h1 class="mt-4">Schedule Data</h1>
-                        <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a class="btn add-btn" href="schedule_Form.php">Add</a></li>
-                        </ol>
+                        
                        
                         <div class="card mb-4">
                             <div class="card-header">

@@ -29,9 +29,21 @@ if($_POST['id'] != null)
         header('location:../screen/admin_Form.php?id='.$_POST['id']);
         exit();
     }
+
+    $sql = "select admin_username from admin where admin_id != '{$_POST['id']}'";
+    $result = get($sql);
+    foreach($result as $row)
+    {
+        if($row['admin_username'] == $_POST['username'])
+        {
+            $_SESSION['error']="มีชื่อผู้ใช้นี้อยู่ในระบบแล้ว";
+            header('location:../screen/admin_Form.php?id='.$_POST['id']);
+            exit();
+        }
+    }
 }
 
-if($_POST['password'] != null && $_POST['confirm-password'] != null)
+if($_POST['password'] != null || $_POST['confirm-password'] != null)
 {
     if($_POST['password'] != $_POST['confirm-password'])
     {
@@ -109,7 +121,7 @@ $set = set($sql);
 if($set == true)
 {
     $_SESSION['message']="complete";
-    header('location:../screen/admin_Tables.php');
+    header('location:../screen/admin_Table.php');
 }
 else
 {
