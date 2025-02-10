@@ -1,19 +1,12 @@
 <?php
 include('../db/db.php');
+authen();
 include('../component/header.php');
-
-
-
 ?>
                 <main>
-                    <div class="container-fluid px-4">
-                        <h1 class="mt-4">Data Manager</h1>
-                        <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Dashboard</li>
-                        </ol>
+                    <div class="container-fluid px-4 text-center">
+                        <h1 class="mt-4">Welcome to Blood Donation System Data Manager</h1>
                         <div class="row">
-                            
-                            
                         </div>
                         
                     </div>
@@ -23,4 +16,3 @@ include('../component/header.php');
 include('../component/footer.php');
 
 ?>
-                

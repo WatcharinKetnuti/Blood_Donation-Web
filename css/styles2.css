@@ -105,14 +105,17 @@
   }
 
   .edit-btn {
-    background-color: #ffcc00; 
-    color: #333;
-    box-shadow: 0 4px 6px rgba(255, 204, 0, 0.3);
+    background-color: white; 
+    color: darkred;
+    border: 1px solid red;
+    box-shadow: 0 4px 6px rgba(255, 0, 0, 0.3);
   }
   
   .edit-btn:hover {
-    background-color: #e6b800; 
-    box-shadow: 0 6px 8px rgba(230, 184, 0, 0.4);
+    background-color: white; 
+    color: darkred;
+    border: 1px solid darkred;
+    box-shadow: 0 6px 8px rgba(255, 0, 0, 0.4);
   }
   
 

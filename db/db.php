@@ -7,7 +7,6 @@ $link = mysqli_connect('localhost','root','','blood_donation') or die('Cannot da
 date_default_timezone_set('Asia/Bangkok');
 mysqli_set_charset ($link,'utf8');
 
-
 function get($sql)
 {
     global $link;
@@ -29,10 +28,19 @@ function set($sql)
 
 function authen()
 {
-    if(!isset($_SESSION['user']) )
+    if(!isset($_SESSION['user']))
     {
-        header("../screen/login.php");
+        header("Location: ../screen/login.php");
     }
+}
+
+function login_status()
+{
+    return $_SESSION['user']?? false;
+}
+function login_data($data)
+{
+	return $_SESSION['user'][$data]?? '';
 }
 
 // function type($data)
@@ -41,9 +49,6 @@ function authen()
 // 	return $authen[$data]?? '';
 // }
 
-function data($data)
-{
-	return $_SESSION['user'][$data]?? '';
-}
+
 
 ?>

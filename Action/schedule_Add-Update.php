@@ -62,13 +62,13 @@ $set = set($sql);
 
 if($set == true)
 {
-    $_SESSION['message'] = "complete";
+    $_SESSION['message'] = "Data has update complete";
     header('location:../screen/schedule_Table.php');
 }
 else
 {
-    echo $sql;
-    exit();
+    // echo $sql;
+    // exit();
     $_SESSION['error'] = "Error from database"; 
     header('location:../screen/schedule_Form.php');
 }

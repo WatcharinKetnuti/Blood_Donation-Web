@@ -1,5 +1,6 @@
 <?php
 include('../db/db.php');
+authen();
 include('../component/header.php');
 include('../component/modal.php');
 
@@ -15,6 +16,13 @@ include('../component/modal.php');
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item"><a class="btn add-btn" href="location_Form.php">Add</a></li>
                         </ol>
+                        <?php
+                            if(isset($_SESSION['message']))
+                            {
+                                echo "<div class='alert alert-success' role='alert'>".$_SESSION['message']."</div>";
+                                unset($_SESSION['message']);
+                            }
+                        ?>
                        
                         <div class="card mb-4">
                             <div class="card-header">

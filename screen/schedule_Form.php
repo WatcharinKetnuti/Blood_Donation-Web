@@ -1,11 +1,8 @@
 <?php
 include('../db/db.php');
+authen();
 include('../component/header.php');
 
-// if($_SESSION['user'] == "")
-// {
-// 	header("Schedule: login.php");
-// }
 
 $id = isset($_GET['id']) ? $_GET['id'] : null;
 $data = null;
@@ -43,12 +40,17 @@ $O = null;
                                 $data = $get[0];
 
                                 echo "<input value='".$data['schedule_id']."' type='hidden' name='id'>";
+                                echo "<input value='".$data['admin_id']."' type='hidden' name='admin_id'>";
 
                                 $blood = explode(",",$data['schedule_blood_type']);
                                 $A = in_array("A",$blood) ;
                                 $B = in_array("B",$blood) ;
                                 $AB = in_array("AB",$blood) ;
                                 $O = in_array("O",$blood) ;
+                            }
+                            else
+                            {
+                                echo "<input value='".login_data('admin_id')."' type='hidden' name='admin_id'>";
                             }
                             ?>
                             
@@ -200,13 +202,9 @@ $O = null;
                         <div class="small">
                             <?php
                             if (isset($_SESSION['error'])) {
-                            ?>
-                                <p class="text-danger">
-                                    <?php echo $_SESSION['error']; ?>
-                                </p>
-                            <?php
-                            unset($_SESSION['error']);
+                                echo "<div class='alert alert-danger' role='alert'>{$_SESSION['error']}</div>";
                             }
+                            unset($_SESSION['error']);
                             ?>
                         </div>
                     </div>

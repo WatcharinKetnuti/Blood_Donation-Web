@@ -1,5 +1,10 @@
 <?php
 include('../db/db.php');
+authen();
+if(login_data('admin_level') != 'A')
+{
+    header("Location: ../screen/index.php");
+}
 include('../component/header.php');
 
 
@@ -126,13 +131,9 @@ $data = null;
                         <div class="small">
                             <?php
                             if (isset($_SESSION['error'])) {
-                            ?>
-                                <p class="text-danger">
-                                    <?php echo $_SESSION['error']; ?>
-                                </p>
-                            <?php
-                            unset($_SESSION['error']);
+                                echo "<div class='alert alert-danger' role='alert'>{$_SESSION['error']}</div>";
                             }
+                            unset($_SESSION['error']);
                             ?>
                         </div>
                     </div>

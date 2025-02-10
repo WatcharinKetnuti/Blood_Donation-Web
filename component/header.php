@@ -29,9 +29,9 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><h5 class="text-center">User: </h5></li>
+                        <li><h5 class="text-center"><?=login_status()? "User: ".login_data('admin_username') : ''?> </h5></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="#!">Logout</a></li>
+                        <li><a class="dropdown-item" href="../Action/logout.php">Logout</a></li>
                     </ul>
                 </li>
             </ul>
@@ -42,6 +42,10 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Data</div>
+                            <?php
+                                if(login_data('admin_level') == 'A')
+                                {
+                            ?>
                             <a class="nav-link" href="../screen/admin_Table.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Admin
@@ -50,6 +54,9 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Member
                             </a>
+                            <?php
+                                }
+                            ?>
                             <a class="nav-link" href="location_Table.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Location
@@ -118,8 +125,22 @@
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
-                        <div class="small">Logged in as:</div>
-                        Start Bootstrap
+                        <div class="small">
+                            <?php
+                                if(login_status())
+                                {
+                                    echo "Logged in as ";
+                                    if(login_data('admin_level') == 'A')
+                                    {
+                                        echo "Administrator";
+                                    }
+                                    else
+                                    {
+                                        echo "Schedule Manager";
+                                    }
+                                }
+                            ?> 
+                        </div>
                     </div>
                 </nav>
             </div>

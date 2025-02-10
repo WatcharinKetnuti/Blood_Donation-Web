@@ -1,5 +1,6 @@
 <?php
 include('../db/db.php');
+authen();
 include('../component/header.php');
 
 
@@ -72,14 +73,10 @@ $data = null;
                     <div class="card-footer text-center py-3">
                         <div class="small">
                             <?php
-                            if (isset($_SESSION['error'])) {
-                            ?>
-                                <p class="text-danger">
-                                    <?php echo $_SESSION['error']; ?>
-                                </p>
-                            <?php
-                            unset($_SESSION['error']);
+                             if (isset($_SESSION['error'])) {
+                                echo "<div class='alert alert-danger' role='alert'>{$_SESSION['error']}</div>";
                             }
+                            unset($_SESSION['error']);
                             ?>
                         </div>
                     </div>

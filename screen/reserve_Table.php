@@ -1,5 +1,6 @@
 <?php
 include('../db/db.php');
+authen();
 include('../component/header.php');
 include('../component/modal.php');
 
@@ -11,12 +12,12 @@ include('../component/modal.php');
 ?>
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Schedule Data</h1>
+                        <h1 class="mt-4">Reserve and Donation Data</h1>
                         
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                Schedule Table
+                                Reserve detail Table
                             </div>
                             <div class="card-body">
                                 <form method="GET" action="">
@@ -43,7 +44,7 @@ include('../component/modal.php');
                                             </select>
                                         </div>
                                         <div class="col-md-2 align-self-end">
-                                            <button type="submit" class="btn btn-primary">Filter</button>
+                                            <button type="submit" class="btn add-btn">Filter</button>
                                         </div>
                                     </div>
                                 </form>
@@ -88,9 +89,9 @@ include('../component/modal.php');
                                                 {
                                                     echo "<tr>";
                                                     echo "<td>".$row['reserve_id']."</td>";
-                                                    echo "<td>".$row['reserve_date']."</td>";
-                                                    echo "<td>".$row['reserve_donation_date']."</td>";
-                                                    echo "<td>".$row['schedule_start_date']." - ".$row['schedule_end_date']."</td>";
+                                                    echo "<td>".date('d/m/Y', strtotime($row['reserve_date']))."</td>";
+                                                    echo "<td>".date('d/m/Y', strtotime($row['reserve_donation_date']))."</td>";
+                                                    echo "<td>".date('d/m/Y', strtotime($row['schedule_start_date']))." - ".date('d/m/Y', strtotime($row['schedule_end_date']))."</td>";
                                                     echo "<td>".$row['location_name']."</td>";
                                                     echo "<td>".$row['member_fname']." ".$row['member_lname']."</td>";
                                                     echo "<td>".$row['member_blood_type']."</td>";
