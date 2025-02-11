@@ -6,7 +6,6 @@ session_start();
 $link = mysqli_connect('localhost','root','','blood_donation') or die('Cannot database');
 date_default_timezone_set('Asia/Bangkok');
 mysqli_set_charset ($link,'utf8');
-
 function get($sql)
 {
     global $link;
@@ -43,11 +42,12 @@ function login_data($data)
 	return $_SESSION['user'][$data]?? '';
 }
 
-// function type($data)
-// {
-// 	$authen= authen();
-// 	return $authen[$data]?? '';
-// }
+function api_acess()
+{
+    header("Access-Control-Allow-Origin: *");
+    header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+    header("Access-Control-Allow-Headers: Content-Type, Authorization");
+}
 
 
 

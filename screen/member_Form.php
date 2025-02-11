@@ -7,12 +7,6 @@ if(login_data('admin_level') != 'A')
 }
 include('../component/header.php');
 
-
-// if($_SESSION['user'] == "")
-// {
-// 	header("Location: login.php");
-// }
-
 $id = isset($_GET['id']) ? $_GET['id'] : null;
 $data = null;
 ?>
