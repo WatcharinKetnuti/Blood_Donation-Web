@@ -47,6 +47,27 @@ function api_acess()
     header("Access-Control-Allow-Origin: *");
     header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
     header("Access-Control-Allow-Headers: Content-Type, Authorization");
+    //header("Content-Type: application/json");
+}
+
+
+function generate_member_id()
+{
+    $sql = "select member_id from member order by member_id desc limit 1";
+    $result = get($sql);
+    if($result)
+    {
+        $lastId = $result[0]['member_id'];
+        $number = (int)substr($lastId, 3);
+        $number++;
+    }
+    else
+    {
+        $number = 1;
+    }
+    $ID = 'mem' . str_pad($number, 7, '0', STR_PAD_LEFT);
+
+    return $ID;
 }
 
 

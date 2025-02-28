@@ -1,6 +1,7 @@
 <?php
 include('../db/db.php');
 
+
 if(empty($_POST['id']))
 {
     if(empty($_POST['fname']) || empty($_POST['lname']) || empty($_POST['email']) || empty($_POST['password']) || empty($_POST['Tel']) || empty($_POST['blood_type']) || 
@@ -81,19 +82,7 @@ if($_POST['password'] != null || $_POST['confirm-password'] != null)
 
 if(empty($_POST['id']))
 {
-    $sql = "select member_id from member order by member_id desc limit 1";
-    $result = get($sql);
-    if($result)
-    {
-        $lastId = $result[0]['member_id'];
-        $number = (int)substr($lastId, 3);
-        $number++;
-    }
-    else
-    {
-        $number = 1;
-    }
-    $ID = 'mem' . str_pad($number, 7, '0', STR_PAD_LEFT);
+    $ID = generate_member_id();
 
     $sql = "INSERT INTO `member`(`member_id`, `member_fname`, `member_lname`, `member_birth_date`, `member_tel`, `member_blood_type`, `member_email`, `member_password`) VALUES
     (
@@ -152,8 +141,6 @@ if($set == true)
 }
 else
 {
-    // echo $sql;
-    // exit();
     $_SESSION['error']="Error from database"; 
     header('location:../screen/member_Form.php');
 }
