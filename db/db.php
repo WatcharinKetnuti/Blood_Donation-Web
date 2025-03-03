@@ -71,5 +71,12 @@ function generate_member_id()
 }
 
 
+function generateToken($length = 32) {
+    $token = random_bytes($length);
+    return bin2hex($token);
+}
+
+
+
 
 ?>

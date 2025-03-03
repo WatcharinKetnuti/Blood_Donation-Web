@@ -13,14 +13,16 @@ $result = get($sql);
 
 
 
+
 if($result)
 {
-    $memberData = $result;
+    $token = generateToken();
+    $memberData = $result + ["success" => true, "token" => $token];
     echo json_encode($memberData);
 }
 else
 {
-    echo json_encode(array("error"=> "ไม่พบข้อมูล"));
+    echo json_encode(["success" => false]);
 }
 
 
