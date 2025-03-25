@@ -36,7 +36,7 @@ include('../component/header.php');
                             }
                             unset($_SESSION['error']);
                         ?>
-                        <div class="small"><a href="register.php">Need an account? Sign up!</a></div>
+                       
                     </div>
                 </div>
             </div>

@@ -4,7 +4,7 @@ include('../db/db.php');
 // var_dump($_POST);
 // exit();
 
-if(empty($_POST['StartDate']) || empty($_POST['EndDate']) || empty($_POST['StartTime']) || empty($_POST['EndTime']) || empty($_POST['detail']) || empty($_POST['blood_type']) || empty($_POST['Status']) || empty($_POST['Location']))
+if(empty($_POST['StartDate']) || empty($_POST['EndDate']) || empty($_POST['StartTime']) || empty($_POST['EndTime']) || empty($_POST['detail']) || empty($_POST['Status']) || empty($_POST['Location']))
 { 
     $_SESSION['error'] = "กรุณากรอกข้อมูลให้ครบ";
     header('location:../screen/schedule_Form.php');

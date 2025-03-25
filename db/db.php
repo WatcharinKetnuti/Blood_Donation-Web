@@ -70,10 +70,37 @@ function generate_member_id()
     return $ID;
 }
 
+function generate_reserve_id()
+{
+    $sql = "select reserve_id from reserve order by reserve_id desc limit 1";
+    $result = get($sql);
+    if($result)
+    {
+        $lastId = $result[0]['reserve_id'];
+        $number = (int)substr($lastId, 3);
+        $number++;
+    }
+    else
+    {
+        $number = 1;
+    }
+    $ID = 'res' . str_pad($number, 8, '0', STR_PAD_LEFT);
+
+    return $ID;
+}
+
 
 function generateToken($length = 32) {
     $token = random_bytes($length);
     return bin2hex($token);
+}
+
+
+function date_diff_in_days($date1, $date2) {
+    $datetime1 = new DateTime($date1);
+    $datetime2 = new DateTime($date2);
+    $interval = $datetime1->diff($datetime2);
+    return $interval->days;
 }
 
 
