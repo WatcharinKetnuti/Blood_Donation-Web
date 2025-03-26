@@ -11,8 +11,10 @@ if(empty($_POST['StartDate']) || empty($_POST['EndDate']) || empty($_POST['Start
     exit();
 }
 
+if($_POST['blood_type'] != null){
+    $blood_types = implode(',', $_POST['blood_type']);
+}
 
-$blood_types = implode(',', $_POST['blood_type']);
 
 if(empty($_POST['id']))
 {
