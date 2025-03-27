@@ -9,7 +9,6 @@ $data = json_decode(file_get_contents("php://input"), true);
 $sql = "select * from member where member_email = '{$data['member_email']}' and member_password = '{$data['member_password']}'"; 
 $result = get($sql);
 
-//echo json_encode($sql);
 
 
 

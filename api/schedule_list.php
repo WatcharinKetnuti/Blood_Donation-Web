@@ -6,7 +6,7 @@
 
     $location =  "location.location_name = '{$_GET['location']}'";
     $date = "schedule.schedule_start_date <= '{$formatted_date}' AND schedule.schedule_end_date >= '{$formatted_date}'";
-    $blood = "schedule.schedule_blood_type = '{$_GET['blood']}' OR schedule.schedule_blood_type = ''";
+    $blood = "schedule.schedule_blood_type LIKE '%{$_GET['blood']}%' OR schedule.schedule_blood_type = ''";
 
     $conditions = [];
     $conditions[] = "schedule.schedule_status = 'E'";
