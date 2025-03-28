@@ -73,7 +73,7 @@ $O = null;
                             <div class="row mb-3">
                                 <div class="col-md-6">
                                     <div class="form-floating mb-3 mb-md-0">
-                                        <input class="form-control" name="StartTime" id="StartTime" type="time" placeholder="Start Time" value="<?=$data['schedule_end_time']??'' ?>" />
+                                        <input class="form-control" name="StartTime" id="StartTime" type="time" placeholder="Start Time" value="<?=$data['schedule_start_time']??'' ?>" />
                                         <label for="StartTime">Start Time</label>
                                     </div>
                                 </div>
@@ -178,6 +178,15 @@ $O = null;
 
                                         </select>
                                         <label for="inputUsername">Location</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-3">
+                                    <div class="form-floating mb-3 mb-md-0">
+                                        <input class="form-control" name="max" id="max" type="number" placeholder="จำนวนคนที่รับ" value="<?=$data['schedule_max']??'' ?>" />
+                                        <label for="max">จำนวนคนที่รับ</label>
                                     </div>
                                 </div>
                             </div>
