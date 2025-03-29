@@ -11,9 +11,7 @@
             LEFT JOIN schedule s ON reserve_detail.schedule_id = s.schedule_id 
             LEFT JOIN location ON s.location_id = location.location_id 
             LEFT JOIN member ON reserve.member_id = member.member_id
-             WHERE reserve.reserve_status = 'W' 
-             AND reserve.member_id = '{$_GET['member_id']}'
-             AND DATEDIFF(reserve_detail.reserve_donation_date, CURDATE()) BETWEEN 0 AND 3
+             WHERE reserve.reserve_status = 'W' AND reserve.member_id = '{$_GET['member_id']}'
              order by reserve.reserve_id desc limit 1
             ";
 

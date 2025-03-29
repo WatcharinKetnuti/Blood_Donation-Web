@@ -2,7 +2,12 @@
     include '../db/db.php';
     api_acess();
 
-    $data = json_decode(file_get_contents("php://input"), true);
+    $noti = isset($_GET['noti']) ? $_GET['noti'] : ""; // Check if 'noti' is set
+    if ($noti != "") {
+        $where = "AND DATEDIFF(reserve_detail.reserve_donation_date, CURDATE()) BETWEEN 0 AND 3";
+    } else {
+        $where = "";
+    }
 
     $sql = "SELECT reserve.*, location.location_name, location.location_detail, s.schedule_start_date,
             s.schedule_end_date, s.schedule_start_time, s.schedule_end_time, s.schedule_detail,
@@ -12,11 +17,10 @@
             LEFT JOIN location ON s.location_id = location.location_id 
             LEFT JOIN member ON reserve.member_id = member.member_id
              WHERE reserve.reserve_status = 'W' AND reserve.member_id = '{$_GET['member_id']}'
-             order by reserve.reserve_id desc limit 1
-            ";
+                $where
+             order by reserve.reserve_id desc limit 1";
 
     //echo $sql;
-     $result = get($sql);
-     echo json_encode($result);
-
+    $result = get($sql);
+    echo json_encode($result);
 ?>
