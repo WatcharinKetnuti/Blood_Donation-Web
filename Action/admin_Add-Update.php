@@ -118,18 +118,5 @@ $set = set($sql);
 // var_dump($set);
 // exit();
 
-if($set == true)
-{
-    $_SESSION['message']="Data has update complete";
-    header('location:../screen/admin_Table.php');
-}
-else
-{
-    // echo $sql;
-    // exit();
-    $_SESSION['error']="Error from database"; 
-    header('location:../screen/admin_Form.php');
-}
-
 
 ?>

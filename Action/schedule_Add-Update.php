@@ -9,25 +9,29 @@ if(empty($_POST['StartDate']) || empty($_POST['EndDate']) || empty($_POST['Start
 )
 { 
     $_SESSION['error'] = "กรุณากรอกข้อมูลให้ครบ";
-    back_to_form();
+    header('location:../screen/schedule_Form.php?id='.$_POST['id']);
+    exit();
 }
 
 if($_POST['StartDate'] > $_POST['EndDate'])
 {
     $_SESSION['error'] = "วันที่เริ่มต้องน้อยกว่าหรือเท่ากับวันที่สิ้นสุด";
-    back_to_form();
+    header('location:../screen/schedule_Form.php?id='.$_POST['id']);
+    exit();
 }
 
 if($_POST['StartTime'] > $_POST['EndTime'] || $_POST['StartTime'] == $_POST['EndTime'])
 {
     $_SESSION['error'] = "เวลาเริ่มต้องน้อยกว่าเวลาสิ้นสุด";
-    back_to_form();
+    header('location:../screen/schedule_Form.php?id='.$_POST['id']);
+    exit();
 }
 
 if($_POST['max'] <= 0)
 {
     $_SESSION['error'] = "จำนวนผู้เข้าร่วมต้องมากกว่า 0";
-    back_to_form();
+    header('location:../screen/schedule_Form.php?id='.$_POST['id']);
+    exit();
 }
 
 
@@ -95,22 +99,10 @@ else
     // echo $sql;
     // exit();
     $_SESSION['error'] = "Error from database"; 
-    back_to_form();
+    header('location:../screen/schedule_Form.php?id='.$_POST['id']);
 }
 
 
 
-function back_to_form()
-{
-    if(empty($_POST['id']))
-    {
-        header('location:../screen/schedule_Form.php');
-        exit();
-    }
-    else
-    {
-        header('location:../screen/schedule_Form.php?id='.$_POST['id']);
-        exit();
-    }
-}
+
 ?>

@@ -5,7 +5,7 @@ include('../db/db.php');
 if(empty($_POST['name']) || empty($_POST['detail']))
 {
     $_SESSION['error']="กรุณากรอกข้อมูลให้ครบ";
-    header('location:../screen/location_Form.php');
+    header('location:../screen/location_Form.php?id='.$_POST['id']);
     exit();
 }
 
@@ -92,8 +92,11 @@ else
     // echo $sql;
     // exit();
     $_SESSION['error']="Error from database"; 
-    header('location:../screen/location_Form.php');
+    header('location:../screen/location_Form.php?id='.$_POST['id']);
 }
+
+
+
 
 
 ?>

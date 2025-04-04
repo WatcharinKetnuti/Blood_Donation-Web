@@ -142,8 +142,10 @@ if($set == true)
 else
 {
     $_SESSION['error']="Error from database"; 
-    header('location:../screen/member_Form.php');
+    header('location:../screen/member_Form.php?id='.$_POST['id']);
 }
+
+
 
 
 ?>

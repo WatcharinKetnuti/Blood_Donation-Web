@@ -24,8 +24,8 @@
     //echo''. $conditions .'';
 
     $sql = "SELECT * FROM schedule 
-                LEFT JOIN location ON schedule.location_id = location.location_id 
-                WHERE $conditions";
+            LEFT JOIN location ON schedule.location_id = location.location_id 
+            WHERE $conditions";
 
 
 
