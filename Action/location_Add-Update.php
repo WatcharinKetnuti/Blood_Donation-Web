@@ -2,7 +2,7 @@
 include('../db/db.php');
 
 
-if(empty($_POST['name']) || empty($_POST['detail']))
+if(empty($_POST['name']) || empty($_POST['address']))
 {
     $_SESSION['error']="กรุณากรอกข้อมูลให้ครบ";
     header('location:../screen/location_Form.php?id='.$_POST['id']);
@@ -61,18 +61,18 @@ if(empty($_POST['id']))
     }
     $ID = 'loc' . str_pad($number, 6, '0', STR_PAD_LEFT);
 
-    $sql = "INSERT INTO location (`location_id`, `location_name`, `location_detail`) VALUES 
+    $sql = "INSERT INTO location (`location_id`, `location_name`, `location_address`) VALUES 
     (
      '$ID',
      '{$_POST['name']}',
-     '{$_POST['detail']}'
+     '{$_POST['address']}'
     )";
 }
 else
 {
     $sql = "UPDATE `location` SET 
     `location_name`='{$_POST['name']}',
-    `location_detail`='{$_POST['detail']}'
+    `location_address`='{$_POST['address']}'
     WHERE location_id = '{$_POST['id']}'";
 }
 

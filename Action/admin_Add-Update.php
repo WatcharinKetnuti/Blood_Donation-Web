@@ -3,7 +3,7 @@ include('../db/db.php');
 
 if(empty($_POST['id']))
 {
-    if(empty($_POST['username']) || empty($_POST['password']) || empty($_POST['adminLevel']))
+    if(empty($_POST['username']) || empty($_POST['password']) || empty($_POST['adminLevel']) || empty($_POST['organization']))
     {
         $_SESSION['error']="กรุณากรอกข้อมูลให้ครบ";
         header('location:../screen/admin_Form.php');
@@ -79,12 +79,13 @@ if(empty($_POST['id']))
     }
     $ID = 'admin' . str_pad($number, 4, '0', STR_PAD_LEFT);
 
-    $sql = "INSERT INTO `admin`(`admin_id`, `admin_username`, `admin_password`, `admin_level`) VALUES 
+    $sql = "INSERT INTO `admin`(`admin_id`, `admin_username`, `admin_password`, `admin_level`, `admin_organization` ) VALUES 
     (
      '$ID',
      '{$_POST['username']}',
      '{$_POST['password']}',
-     '{$_POST['adminLevel']}'
+     '{$_POST['adminLevel']}',
+     '{$_POST['organization']}'
     )
     ";
 }
@@ -95,6 +96,7 @@ else
         $sql = "UPDATE admin set 
         `admin_username`='{$_POST['username']}',
         `admin_level`='{$_POST['adminLevel']}'
+        `admin_organization`='{$_POST['organization']}'
         WHERE admin_id = '{$_POST['id']}' " ;
     }
     else
@@ -103,6 +105,7 @@ else
         `admin_username`='{$_POST['username']}',
         `admin_password`='{$_POST['password']}',
         `admin_level`='{$_POST['adminLevel']}'
+        `admin_organization`='{$_POST['organization']}'
         WHERE admin_id = '{$_POST['id']}' " ;
     }
 }
@@ -112,6 +115,21 @@ else
 
 
 $set = set($sql);
+
+
+if($set == true)
+{
+    $_SESSION['message']="Data has update complete";
+    header('location:../screen/admin_Table.php');
+}
+else
+{
+    // echo $sql;
+    // exit();
+    $_SESSION['error']="Error from database"; 
+    header('location:../screen/admin_Form.php?id='.$_POST['id']);
+}
+
 
 
 // var_dump($sql);

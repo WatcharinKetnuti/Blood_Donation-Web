@@ -4,8 +4,8 @@ include('../db/db.php');
 
 if(empty($_POST['id']))
 {
-    if(empty($_POST['fname']) || empty($_POST['lname']) || empty($_POST['email']) || empty($_POST['password']) || empty($_POST['Tel']) || empty($_POST['blood_type']) || 
-    empty($_POST['birthdate']) )
+    if(empty($_POST['fname']) || empty($_POST['lname']) || empty($_POST['email']) || empty($_POST['password']) || empty($_POST['Tel']) || empty($_POST['blood_type']) 
+    || empty($_POST['birthdate']) || empty($_POST['cardID']) || empty($_POST['address']))
     {
         $_SESSION['error']="กรุณากรอกข้อมูลให้ครบ";
         header('location:../screen/member_Form.php');
@@ -16,6 +16,14 @@ if(empty($_POST['id']))
     if(get($sql))
     {
         $_SESSION['error']="มีอีเมลนี้อยู่ในระบบแล้ว";
+        header('location:../screen/member_Form.php');
+        exit();
+    }
+
+    $sql = "select * from member where member_cardID = '{$_POST['cardID']}'";
+    if(get($sql))
+    {
+        $_SESSION['error']="มีรหัสบัตรประชาชนนี้อยู่ในระบบแล้ว";
         header('location:../screen/member_Form.php');
         exit();
     }
@@ -40,13 +48,19 @@ if($_POST['id'] != null)
         exit();
     }
 
-    $sql = "select member_email, member_tel from member where member_id != '{$_POST['id']}'";
+    $sql = "select member_email, member_tel, member_cardID from member where member_id != '{$_POST['id']}'";
     $result = get($sql);
     foreach($result as $row)
     {
         if($row['member_email'] == $_POST['email'])
         {
             $_SESSION['error']="มีอีเมลนี้อยู่ในระบบแล้ว";
+            header('location:../screen/member_Form.php?id='.$_POST['id']);
+            exit();
+        }
+        if($row['member_cardID'] == $_POST['cardID'])
+        {
+            $_SESSION['error']="มีรหัสบัตรประชาชนนี้อยู่ในระบบแล้ว";
             header('location:../screen/member_Form.php?id='.$_POST['id']);
             exit();
         }
@@ -84,13 +98,15 @@ if(empty($_POST['id']))
 {
     $ID = generate_member_id();
 
-    $sql = "INSERT INTO `member`(`member_id`, `member_fname`, `member_lname`, `member_birth_date`, `member_tel`, `member_blood_type`, `member_email`, `member_password`) VALUES
+    $sql = "INSERT INTO `member`(`member_id`, `member_fname`, `member_lname`, `member_birth_date`, `member_tel`, `member_cardID`, `member_address`, `member_blood_type`, `member_email`, `member_password`) VALUES 
     (
      '$ID',
      '{$_POST['fname']}',
      '{$_POST['lname']}',
      '{$_POST['birthdate']}',
      '{$_POST['Tel']}',
+     '{$_POST['cardID']}',
+     '{$_POST['address']}',
      '{$_POST['blood_type']}',
      '{$_POST['email']}',
      '{$_POST['password']}'
@@ -105,6 +121,8 @@ else
         member_lname = '{$_POST['lname']}',
         member_email = '{$_POST['email']}',
         member_tel = '{$_POST['Tel']}',
+        member_cardID = '{$_POST['cardID']}',
+        member_address = '{$_POST['address']}',
         member_blood_type = '{$_POST['blood_type']}',
         member_birth_date = '{$_POST['birthdate']}'
         WHERE member_id = '{$_POST['id']}'";
@@ -117,6 +135,8 @@ else
         member_email = '{$_POST['email']}',
         member_password = '{$_POST['password']}',
         member_tel = '{$_POST['Tel']}',
+        member_cardID = '{$_POST['cardID']}',
+        member_address = '{$_POST['address']}',
         member_blood_type = '{$_POST['blood_type']}', 
         member_birth_date = '{$_POST['birthdate']}'
         WHERE member_id = '{$_POST['id']}'";

@@ -89,9 +89,9 @@ $data = null;
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-floating mb-3 mb-md-0">
-                                        <select class="form-select" name="blood_type" id="blood_type" aria-label="Floating label select example" value="<?=$data['member_blod_type']?? '' ?>>
+                                        <select class="form-select" name="blood_type" id="blood_type" aria-label="Floating label select example" >
                                             <option value="<?php if($data != null)echo $data['member_blood_type'] ?>">
-                                                
+                                                <?php if($data != null)echo $data['member_blood_type'] ?>
                                             </option>
                                             <option value="A">A</option>
                                             <option value="B">B</option>
@@ -101,6 +101,14 @@ $data = null;
                                         <label for="inputUsername">Blood type</label>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input class="form-control" name="cardID" id="" type="text" placeholder="" value="<?php if($data != null)echo $data['member_cardID'] ?>" />
+                                <label for="inputCardID">Card ID</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <textarea rows="6" class="form-control" style="height:100%;"  name="address" id="" type="text" placeholder="" value="" ><?=$data['member_address']??'' ?></textarea>
+                                <label for="inputDetail">Address</label>
                             </div>
                             <div class="form-floating mb-3">
                                 

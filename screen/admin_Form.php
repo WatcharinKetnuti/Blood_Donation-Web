@@ -82,6 +82,10 @@ $data = null;
                                 </select>
                                 <label for="inputUsername">Admin Level</label>
                             </div>
+                            <div class="form-floating mb-3">
+                                <input class="form-control" name="organization" id="" type="text" placeholder="" value="<?php if($data != null)echo $data['admin_organization'] ?>" />
+                                <label for="inputUsername">Organization</label>
+                            </div>
                             <div class="mt-4 mb-0">
                                 <div class="d-grid"><button class="btn add-btn btn-block" type="submit" href="">
                                     <?php

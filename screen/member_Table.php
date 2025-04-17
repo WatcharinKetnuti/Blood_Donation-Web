@@ -42,6 +42,8 @@ include('../component/modal.php');
                                             <th>Birth Date</th>
                                             <th>Tel</th>
                                             <th>Blood Type</th>
+                                            <th>IDCard</th>
+                                            <th>Address</th>
                                             <th>Email</th>
                                             <th></th>
                                         </tr>
@@ -61,6 +63,8 @@ include('../component/modal.php');
                                                     echo "<td>".date('d/m/Y', strtotime($row['member_birth_date']))."</td>";
                                                     echo "<td>".$row['member_tel']."</td>";
                                                     echo "<td>".$row['member_blood_type']."</td>";
+                                                    echo "<td>".$row['member_cardID']."</td>";
+                                                    echo "<td>".$row['member_address']."</td>";
                                                     echo "<td>".$row['member_email']."</td>";
                                                     echo "<td>
                                                     <a class='btn edit-btn' href='member_Form.php?id=".$row['member_id']."'>Edit</a>

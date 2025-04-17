@@ -29,6 +29,7 @@ include('../component/modal.php');
                                             <th>Username</th>
                                             <th>Password</th>
                                             <th>Level</th>
+                                            <th>Organization</th>
                                             <th></th>
                                         </tr>
                                     </thead>
@@ -46,6 +47,7 @@ include('../component/modal.php');
                                                     echo "<td>".$row['admin_username']."</td>";
                                                     echo "<td>".$row['admin_password']."</td>";
                                                     echo "<td>".$row['admin_level']."</td>";
+                                                    echo "<td>".$row['admin_organization']."</td>";
                                                     echo "<td>
                                                     <a class='btn edit-btn' href='admin_Form.php?id=".$row['admin_id']."'>Edit</a>
                                                     <button class='btn delete-btn' data-bs-toggle='modal' data-bs-target='#exampleModal' data-href='../Action/admin_Delete.php?id=".$row['admin_id']." '>Delete</button>

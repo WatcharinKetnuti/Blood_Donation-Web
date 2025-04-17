@@ -36,7 +36,6 @@ include('../component/modal.php');
                                             <th>ID</th>
                                             <th>Date</th>
                                             <th>Time</th>
-                                            <th>Max donation</th>
                                             <th>Blood type</th>
                                             <th>Detail</th>
                                             <th>Status</th>
@@ -61,7 +60,6 @@ include('../component/modal.php');
                                                     echo "<td>".$row['schedule_id']."</td>";
                                                     echo "<td>".date('d/m/Y', strtotime($row['schedule_start_date']))." - ".date('d/m/Y', strtotime($row['schedule_end_date']))."</td>";
                                                     echo "<td>".$row['schedule_start_time']." - ".$row['schedule_end_time']."</td>";
-                                                    echo "<td>".$row['schedule_max']."</td>";
                                                     echo "<td>".$row['schedule_blood_type']."</td>";
                                                     echo "<td>".$row['schedule_detail']."</td>";
                                                     echo "<td>".($row['schedule_status'] == "E" ? "Enable" : ($row['schedule_status'] == "D" ? "Disable" : "Cancel"))."</td>";

@@ -50,8 +50,8 @@ $data = null;
                                 <label for="inputName">Name</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <textarea rows="6" class="form-control" style="height:100%;"  name="detail" id="" type="text" placeholder="" value="" ><?=$data['location_detail']??'' ?></textarea>
-                                <label for="inputDetail">Detail</label>
+                                <textarea rows="6" class="form-control" style="height:100%;"  name="address" id="" type="text" placeholder="" value="" ><?=$data['location_address']??'' ?></textarea>
+                                <label for="inputDetail">Address</label>
                             </div>
                             
                             <div class="mt-4 mb-0">

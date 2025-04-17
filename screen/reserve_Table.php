@@ -128,18 +128,14 @@ include('../component/modal.php');
                 </main>
 <script>
     function updateSearchValue(form) {
-        var searchValue = document.querySelector('#datatablesSimple_filter input').value;
-        form.search.value = searchValue;
+        var searchInput = document.querySelector('#datatablesSimple_filter input');
+        if (searchInput) {
+            var searchValue = searchInput.value;
+            form.search.value = searchValue;
+        }
         form.submit();
     }
 
-    document.addEventListener('DOMContentLoaded', function() {
-        var searchValue = "<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>";
-        if (searchValue) {
-            document.querySelector('#datatablesSimple_filter input').value = searchValue;
-            document.querySelector('#datatablesSimple').DataTable().search(searchValue).draw();
-        }
-    });
 </script>
 <?php
 include('../component/footer.php');

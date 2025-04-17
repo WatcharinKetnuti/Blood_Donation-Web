@@ -129,7 +129,7 @@ $O = null;
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-floating mb-3 mb-md-0">
-                                        <select class="form-select" name="Status" id="Status" aria-label="Floating label select example">
+                                        <select class="form-select" name="Status" id="Status" aria-label="Floating label select example" >
                                             <option value="<?=$data['schedule_status']?? ''?>">
                                                 <?php
                                                 if($data != null)
@@ -147,7 +147,7 @@ $O = null;
                                                         echo "Cancel";
                                                     }
                                                 }
-                                                ?>
+                                            ?>
                                             </option>
                                             <option value="E">Enable</option>
                                             <option value="D">Disable</option>
@@ -182,14 +182,6 @@ $O = null;
                                 </div>
                             </div>
 
-                            <div class="row mb-3">
-                                <div class="col-md-3">
-                                    <div class="form-floating mb-3 mb-md-0">
-                                        <input class="form-control" name="max" id="max" type="number" placeholder="จำนวนคนที่รับ" value="<?=$data['schedule_max']??'' ?>" />
-                                        <label for="max">จำนวนคนที่รับ</label>
-                                    </div>
-                                </div>
-                            </div>
                             
                             <div class="mt-4 mb-0">
                                 <div class="d-grid"><button class="btn add-btn btn-block" type="submit" href="">
