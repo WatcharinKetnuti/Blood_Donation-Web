@@ -1,12 +1,10 @@
 <?php
     include '../db/db.php';
     api_acess();
-
-    $noti = isset($_GET['noti']) ? $_GET['noti'] : ""; // Check if 'noti' is set
-    if ($noti != "") {
+    $where = "";
+    $noti = $_GET['noti'] ?? "false";
+    if($noti == "true") {
         $where = "AND DATEDIFF(reserve_detail.reserve_donation_date, CURDATE()) BETWEEN 0 AND 3";
-    } else {
-        $where = "";
     }
 
     $sql = "SELECT reserve.*, location.location_name, location.location_address, s.schedule_start_date,
@@ -19,8 +17,9 @@
              WHERE reserve.reserve_status = 'W' AND reserve.member_id = '{$_GET['member_id']}'
                 $where
              order by reserve.reserve_id desc limit 1";
-
+    //echo $noti;
     //echo $sql;
+
     $result = get($sql);
     echo json_encode($result);
 ?>
