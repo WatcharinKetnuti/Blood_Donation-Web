@@ -4,7 +4,7 @@
 
     $data = json_decode(file_get_contents("php://input"), true);
 
-    $sql = "SELECT reserve.*, location.location_name, location.location_detail, s.schedule_start_date,
+    $sql = "SELECT reserve.*, location.location_name, location.location_address, s.schedule_start_date,
             s.schedule_end_date, s.schedule_start_time, s.schedule_end_time, s.schedule_detail,
             reserve_detail.reserve_donation_date FROM reserve 
             LEFT JOIN reserve_detail ON reserve.reserve_id = reserve_detail.reserve_id 

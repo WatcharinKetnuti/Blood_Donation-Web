@@ -23,15 +23,24 @@ if(get($sql))
     exit();
 }
 
+$sql = "select * from member where member_cardID = '{$data['member_cardID']}' ";
+if(get($sql))
+{
+    echo json_encode(value: ["success" => false, "message" => "มีรหัสบัตรประชาชนนี้อยู่ในระบบแล้ว"]);
+    exit();
+}
+
 
 $ID = generate_member_id();
-$sql = "INSERT INTO `member`(`member_id`, `member_fname`, `member_lname`, `member_birth_date`, `member_tel`, `member_blood_type`, `member_email`, `member_password`) VALUES
+$sql = "INSERT INTO `member`(`member_id`, `member_fname`, `member_lname`, `member_birth_date`, `member_tel`, `member_cardID`, `member_address`, `member_blood_type`, `member_email`, `member_password`) VALUES 
 (
     '$ID',
     '{$data['member_fname']}',
     '{$data['member_lname']}',
     '{$data['member_birth_date']}',
     '{$data['member_tel']}',
+    '{$data['member_cardID']}',
+    '{$data['member_address']}',
     '{$data['member_blood_type']}',
     '{$data['member_email']}',
     '{$data['member_password']}'
