@@ -141,9 +141,10 @@
 
   .detail-column {
     max-width: 200px;
-    white-space: nowrap;
+    white-space: normal;
     overflow: hidden;
     text-overflow: ellipsis;
+    word-wrap: break-word;
   }
   table {
       table-layout: fixed;

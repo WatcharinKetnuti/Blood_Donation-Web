@@ -18,7 +18,7 @@ include('../component/modal.php');
                     <div class="container-fluid px-4">
                         <h1 class="mt-4">Member Data</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a class="btn add-btn" href="member_Form.php">Add</a></li>
+                            
                         </ol>
                         <?php
                             if(isset($_SESSION['message']))
@@ -67,7 +67,7 @@ include('../component/modal.php');
                                                     echo "<td>".$row['member_address']."</td>";
                                                     echo "<td>".$row['member_email']."</td>";
                                                     echo "<td>
-                                                    <a class='btn edit-btn' href='member_Form.php?id=".$row['member_id']."'>Edit</a>
+                                                   
                                                     
                                                     </td>";
                                                     echo "</tr>";
