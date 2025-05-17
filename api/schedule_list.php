@@ -2,14 +2,16 @@
     include '../db/db.php';
     api_acess();
 
+    $datenow = date('Y-m-d');
     $formatted_date = date('Y-m-d', strtotime($_GET['date']));
 
     $location =  "location.location_name = '{$_GET['location']}'";
-    $date = "schedule.schedule_start_date <= '{$formatted_date}' AND schedule.schedule_end_date >= '{$formatted_date}'";
+    $date = "'$formatted_date' BETWEEN schedule.schedule_start_date AND schedule.schedule_end_date";
     $blood = "schedule.schedule_blood_type LIKE '%{$_GET['blood']}%' ";
 
     $conditions = [];
     $conditions[] = "schedule.schedule_status = 'E'";
+    $conditions[] = "schedule.schedule_start_date >= '$datenow'";
     if (!empty($_GET['location'])) {
         $conditions[] = $location;
     }
@@ -25,8 +27,9 @@
 
     $sql = "SELECT * FROM schedule 
             LEFT JOIN location ON schedule.location_id = location.location_id 
-            WHERE $conditions";
-
+            WHERE $conditions
+            ORDER BY schedule.schedule_start_date DESC";
+            
 
 
 
