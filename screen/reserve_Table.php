@@ -51,14 +51,14 @@ include('../component/modal.php');
                                 <table id="datatablesSimple">
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
-                                            <th>Reserve Date</th>
-                                            <th>Donation Date</th>
-                                            <th>Schedule date</th>
-                                            <th>Location</th>
-                                            <th>User</th>
-                                            <th>Blood type</th>
-                                            <th>Status</th>
+                                            <th>รหัสการจอง</th>
+                                            <th>วันที่จอง</th>
+                                            <th>วันที่บริจาคเลือด</th>
+                                            <th>ตารางเวลาที่จอง</th>
+                                            <th>สถานที่บริจาคเลือด</th>
+                                            <th>ชื่อผู้จอง/บริจาค</th>
+                                            <th>กรุ๊ปเลือดของผู้บริจาค</th>
+                                            <th>สถานะ</th>
                                         </tr>
                                     </thead>
                                     
@@ -140,3 +140,6 @@ include('../component/modal.php');
 <?php
 include('../component/footer.php');
 ?>
+
+
+

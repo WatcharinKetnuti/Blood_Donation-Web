@@ -37,14 +37,14 @@ include('../component/modal.php');
                                 <table id="datatablesSimple">
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
-                                            <th>Name</th>
-                                            <th>Birth Date</th>
-                                            <th>Tel</th>
-                                            <th>Blood Type</th>
-                                            <th>IDCard</th>
-                                            <th>Address</th>
-                                            <th>Email</th>
+                                            <th>รหัสผู้ใช้</th>
+                                            <th>ชื่อจริงผู้ใช้</th>
+                                            <th>วีนเกิดผู้ใช้</th>
+                                            <th>เบอร์โทรผู้ใช่</th>
+                                            <th>กรุ๊ปเลือดผู้ใช้</th>
+                                            <th>รหัสบัตรประชาชนผู้ใช้</th>
+                                            <th>ที่อยู่ผู้ใช้</th>
+                                            <th>อีเมลผู้ใช้</th>
                                             <th></th>
                                         </tr>
                                     </thead>
@@ -67,8 +67,7 @@ include('../component/modal.php');
                                                     echo "<td>".$row['member_address']."</td>";
                                                     echo "<td>".$row['member_email']."</td>";
                                                     echo "<td>
-                                                   
-                                                    
+                                                       
                                                     </td>";
                                                     echo "</tr>";
                                                 }
