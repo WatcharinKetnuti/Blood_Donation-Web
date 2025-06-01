@@ -33,9 +33,9 @@ include('../component/modal.php');
                                 <table id="datatablesSimple">
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
-                                            <th>Name</th>
-                                            <th class="detail-column">Detail</th>
+                                            <th>รหัสสถานที่</th>
+                                            <th>ชื่อสถานที่</th>
+                                            <th class="detail-column">ที่อยู่สถานที่</th>
                                             <th></th>
                                         </tr>
                                     </thead>
