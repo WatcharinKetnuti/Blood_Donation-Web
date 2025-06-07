@@ -8,7 +8,13 @@ include('../component/modal.php');
 <main>
     <div class="container-fluid px-4">
         <h1 class="mt-4">Reserve and Donation Data</h1>
-        
+        <?php
+                            if(isset($_SESSION['message']))
+                            {
+                                echo "<div class='alert alert-success' role='alert'>".$_SESSION['message']."</div>";
+                                unset($_SESSION['message']);
+                            }
+                        ?>
         <div class="card mb-4">
             <div class="card-header">
                 <i class="fas fa-table me-1"></i>

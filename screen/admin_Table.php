@@ -15,7 +15,13 @@ include('../component/modal.php');
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item"><a class="btn add-btn" href="admin_Form.php">Add</a></li>
                         </ol>
-                       
+                       <?php
+                            if(isset($_SESSION['message']))
+                            {
+                                echo "<div class='alert alert-success' role='alert'>".$_SESSION['message']."</div>";
+                                unset($_SESSION['message']);
+                            }
+                        ?>
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>

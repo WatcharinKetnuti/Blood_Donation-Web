@@ -21,6 +21,13 @@ $expired_count = $expired ? $expired[0]['expired_count'] : 0;
 ?>
 
 <main>
+    <?php
+                            if(isset($_SESSION['message']))
+                            {
+                                echo "<div class='alert alert-success' role='alert'>".$_SESSION['message']."</div>";
+                                unset($_SESSION['message']);
+                            }
+                        ?>
     <div class="container-fluid px-4">
         <h1 class="mt-4">Schedule Data</h1>
         <ol class="breadcrumb mb-4">
