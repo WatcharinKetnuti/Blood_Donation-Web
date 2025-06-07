@@ -10,6 +10,14 @@ $A = null;
 $B = null;
 $AB = null;
 $O = null;
+$ARh = null;
+$ARh = null;
+$BRh = null;
+$BRh = null;
+$ORh = null;
+$ORh = null;
+$ABRh = null;
+$ABRh = null;
 ?>
 <main>
     <div class="container">

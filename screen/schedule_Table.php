@@ -32,12 +32,22 @@ $expired_count = $expired ? $expired[0]['expired_count'] : 0;
                 📌 มี <?= $expired_count ?> รายการที่เลยวันที่บริจาคแล้ว!
             </div>
         <?php endif; ?>
-        <!-- Tabs ที่เพิ่มมา --> 
-        <div class="mb-3">
-            <a class="btn <?= $tab == 'all' ? 'btn-primary' : 'btn-outline-primary' ?> me-2" href="?tab=all">all</a> <!-- ทั้งหมด --> 
-            <a class="btn <?= $tab == 'upcoming' ? 'btn-success' : 'btn-outline-success' ?> me-2" href="?tab=upcoming">upcoming</a> <!-- กำลังจะถึง --> 
-            <a class="btn <?= $tab == 'past' ? 'btn-danger' : 'btn-outline-danger' ?>" href="?tab=past">past</a> <!-- ที่ผ่านมา --> 
+
+        <!-- Tabs -->
+        <div class="mb-4">
+            <div class="btn-group" role="group" aria-label="Schedule Tabs">
+                <a href="?tab=all" class="btn <?= $tab == 'all' ? 'btn-primary text-white' : 'btn-outline-primary' ?>">
+                    <i class="fas fa-list"></i> all
+                </a>
+                <a href="?tab=upcoming" class="btn <?= $tab == 'upcoming' ? 'btn-success text-white' : 'btn-outline-success' ?>">
+                    <i class="fas fa-calendar-plus"></i> upcoming
+                </a>
+                <a href="?tab=past" class="btn <?= $tab == 'past' ? 'btn-danger text-white' : 'btn-outline-danger' ?>">
+                    <i class="fas fa-history"></i> past
+                </a>
+            </div>
         </div>
+        
 
         <!-- ตารางข้อมูล -->
         <div class="card mb-4">
@@ -46,14 +56,14 @@ $expired_count = $expired ? $expired[0]['expired_count'] : 0;
                 <table id="datatablesSimple">
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Date</th>
-                            <th>Time</th>
-                            <th>Blood type</th>
-                            <th>Detail</th>
-                            <th>Status</th>
-                            <th>Location</th>
-                            <th>Admin Name</th>
+                            <th>รหัสกำหนดการ</th>
+                            <th>วันกำหนดการ</th>
+                            <th>เวลากำหนดการ</th>
+                            <th>กรุ๊ปเลือดที่รับ</th>
+                            <th>สถานที่</th>
+                            <th>สถานะ</th>
+                            <th>รายละเอียด</th>
+                            <th>ผู้ดูแลระบบ</th>
                             <th></th>
                         </tr>
                     </thead>
