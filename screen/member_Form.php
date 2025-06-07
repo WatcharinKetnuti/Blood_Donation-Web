@@ -97,6 +97,7 @@ $data = null;
                                             <option value="B">B</option>
                                             <option value="AB">AB</option>
                                             <option value="O">O</option>
+                                            <option value="negative">AB negative</option>
                                         </select>
                                         <label for="inputUsername">Blood type</label>
                                     </div>
