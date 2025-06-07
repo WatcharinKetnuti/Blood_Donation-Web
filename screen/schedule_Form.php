@@ -12,8 +12,13 @@ $AB = null;
 $O = null;
 $ARh = null;
 $ARh = null;
+<<<<<<< HEAD
 $BRh = null;
 $BRh = null;
+=======
+$ฺBRh = null;
+$ฺBRh = null;
+>>>>>>> 845ea53e6eb0f5b686cc8a6f2b8113c8e64146ae
 $ORh = null;
 $ORh = null;
 $ABRh = null;

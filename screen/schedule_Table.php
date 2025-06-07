@@ -32,6 +32,7 @@ $expired_count = $expired ? $expired[0]['expired_count'] : 0;
                 📌 มี <?= $expired_count ?> รายการที่เลยวันที่บริจาคแล้ว!
             </div>
         <?php endif; ?>
+<<<<<<< HEAD
 
         <!-- Tabs -->
         <div class="mb-4">
@@ -47,6 +48,23 @@ $expired_count = $expired ? $expired[0]['expired_count'] : 0;
                 </a>
             </div>
         </div>
+=======
+        
+        <!-- Tabs -->
+<div class="mb-4">
+    <div class="btn-group" role="group" aria-label="Schedule Tabs">
+        <a href="?tab=all" class="btn <?= $tab == 'all' ? 'btn-primary text-white' : 'btn-outline-primary' ?>">
+            <i class="fas fa-list"></i> all
+        </a>
+        <a href="?tab=upcoming" class="btn <?= $tab == 'upcoming' ? 'btn-success text-white' : 'btn-outline-success' ?>">
+            <i class="fas fa-calendar-plus"></i> upcoming
+        </a>
+        <a href="?tab=past" class="btn <?= $tab == 'past' ? 'btn-danger text-white' : 'btn-outline-danger' ?>">
+            <i class="fas fa-history"></i> past
+        </a>
+    </div>
+</div>
+>>>>>>> 845ea53e6eb0f5b686cc8a6f2b8113c8e64146ae
 
         <!-- ตารางข้อมูล -->
         <div class="card mb-4">
@@ -59,10 +77,17 @@ $expired_count = $expired ? $expired[0]['expired_count'] : 0;
                             <th>วันกำหนดการ</th>
                             <th>เวลากำหนดการ</th>
                             <th>กรุ๊ปเลือดที่รับ</th>
+<<<<<<< HEAD
                             <th>สถานที่</th>
                             <th>สถานะ</th>
                             <th>รายละเอียด</th>
                             <th>ผู้ดูแลระบบ</th>
+=======
+                            <th>สถานที่กำหนดการ</th>
+                            <th>สถานะกำหนดการ</th>
+                            <th>รายละเอียดกำหนดการ</th>
+                            <th>ชื่อผู้ดูแลระบบ</th>
+>>>>>>> 845ea53e6eb0f5b686cc8a6f2b8113c8e64146ae
                             <th></th>
                         </tr>
                     </thead>
