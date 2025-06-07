@@ -4,7 +4,6 @@ api_acess();
 
 $data = json_decode(file_get_contents("php://input"), true);
 $datenow = date('Y-m-d H:i:s');
-
 if(empty($data)) {
     echo json_encode(["success" => false, "message" => "ไม่มีข้อมูล"]);
     exit();
@@ -12,13 +11,25 @@ if(empty($data)) {
 
 $sql = "SELECT * FROM reserve WHERE member_id = '{$data['member_id']}' AND reserve_status = 'W'";
 $result = get($sql);
-
 if($result) {
     echo json_encode(["success" => false, "message" => "มีการจองบริจาคโลหิตอยู่แล้ว"]);
     exit();
 }
 
 
+$sql = "SELECT schedule_max FROM schedule WHERE schedule_id = '{$data['schedule_id']}'";
+$schedule_result = get($sql);
+$schedule_max = $schedule_result[0]['schedule_max'];
+$sql_count = "SELECT COUNT(*) as total FROM reserve_detail rd 
+              JOIN reserve r ON rd.reserve_id = r.reserve_id 
+              WHERE rd.schedule_id = '{$data['schedule_id']}' AND r.reserve_status = 'W'";
+$count_result = get($sql_count);
+$current_reservations = $count_result[0]['total'];
+
+if($current_reservations >= $schedule_max) {
+    echo json_encode(["success" => false, "message" => "การจองเต็มแล้ว"]);
+    exit();
+}
 
 
 
