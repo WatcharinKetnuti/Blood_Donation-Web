@@ -39,7 +39,7 @@ if($_POST['max'] <= 0)
 
 $blood_types = implode(',', $_POST['blood_type']);
 
-
+$currunt_admin = login_data('admin_id');
 
 if(empty($_POST['id']))
 {
@@ -69,7 +69,7 @@ if(empty($_POST['id']))
      '$blood_types',
      '{$_POST['Status']}',
      '{$_POST['Location']}',
-     'admin0001'
+     '$currunt_admin'
     )";
 }
 else
