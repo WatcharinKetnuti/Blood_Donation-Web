@@ -11,7 +11,7 @@
 
     $conditions = [];
     $conditions[] = "schedule.schedule_status = 'E'";
-    $conditions[] = "schedule.schedule_start_date >= '$datenow'";
+    $conditions[] = "schedule.schedule_start_date >= '$datenow' OR schedule.schedule_end_date >= '$datenow'";
     if (!empty($_GET['location'])) {
         $conditions[] = $location;
     }

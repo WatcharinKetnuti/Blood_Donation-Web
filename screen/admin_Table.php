@@ -25,11 +25,11 @@ include('../component/modal.php');
                                 <table id="datatablesSimple">
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
-                                            <th>Username</th>
-                                            <th>Password</th>
-                                            <th>Level</th>
-                                            <th>Organization</th>
+                                            <th>รหัสผู้ดูแลระบบ</th>
+                                            <th>ชื่อผู้ใช้ของผู้ดูแลระบบ</th>
+                                            <th>รหัสผ่านผู้ดูแลระบบ</th>
+                                            <th>ระบบของผู้ดูแลระบบ</th>
+                                            <th>องค์กรของผู้ดูแลระบบ</th>
                                             <th></th>
                                         </tr>
                                     </thead>

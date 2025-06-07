@@ -1,8 +1,6 @@
 <?php
 include('../db/db.php');
 include('../component/header.php');
-
-
 ?>
 
 <main>

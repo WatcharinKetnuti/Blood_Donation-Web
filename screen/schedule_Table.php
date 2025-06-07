@@ -14,6 +14,10 @@ if ($tab == 'past') {
 } elseif ($tab == 'upcoming') {
     $condition = "WHERE schedule_end_date >= CURDATE()";
 }
+
+// ตรวจสอบมี schedule ที่หมดอายุไหม
+$expired = get("SELECT COUNT(*) as expired_count FROM schedule WHERE schedule_end_date < CURDATE()");
+$expired_count = $expired ? $expired[0]['expired_count'] : 0;
 ?>
 
 <main>
@@ -23,32 +27,42 @@ if ($tab == 'past') {
             <li class="breadcrumb-item"><a class="btn add-btn" href="schedule_Form.php">Add</a></li>
         </ol>
 
-        <?php if (isset($_SESSION['message'])): ?>
-            <div class='alert alert-success' role='alert'><?= $_SESSION['message']; ?></div>
-            <?php unset($_SESSION['message']); ?>
+        <?php if ($expired_count > 0): ?>
+            <div class='alert alert-warning'>
+                📌 มี <?= $expired_count ?> รายการที่เลยวันที่บริจาคแล้ว!
+            </div>
         <?php endif; ?>
-        <!-- Tabs ที่เพิ่มมา --> 
-        <div class="mb-3">
-            <a class="btn <?= $tab == 'all' ? 'btn-primary' : 'btn-outline-primary' ?> me-2" href="?tab=all">all</a> <!-- ทั้งหมด --> 
-            <a class="btn <?= $tab == 'upcoming' ? 'btn-success' : 'btn-outline-success' ?> me-2" href="?tab=upcoming">upcoming</a> <!-- กำลังจะถึง --> 
-            <a class="btn <?= $tab == 'past' ? 'btn-danger' : 'btn-outline-danger' ?>" href="?tab=past">past</a> <!-- ที่ผ่านมา --> 
+
+        <!-- Tabs -->
+        <div class="mb-4">
+            <div class="btn-group" role="group" aria-label="Schedule Tabs">
+                <a href="?tab=all" class="btn <?= $tab == 'all' ? 'btn-primary text-white' : 'btn-outline-primary' ?>">
+                    <i class="fas fa-list"></i> all
+                </a>
+                <a href="?tab=upcoming" class="btn <?= $tab == 'upcoming' ? 'btn-success text-white' : 'btn-outline-success' ?>">
+                    <i class="fas fa-calendar-plus"></i> upcoming
+                </a>
+                <a href="?tab=past" class="btn <?= $tab == 'past' ? 'btn-danger text-white' : 'btn-outline-danger' ?>">
+                    <i class="fas fa-history"></i> past
+                </a>
+            </div>
         </div>
 
-
+        <!-- ตารางข้อมูล -->
         <div class="card mb-4">
             <div class="card-header"><i class="fas fa-table me-1"></i>Schedule Table</div>
             <div class="card-body">
                 <table id="datatablesSimple">
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Date</th>
-                            <th>Time</th>
-                            <th>Blood type</th>
-                            <th>Detail</th>
-                            <th>Status</th>
-                            <th>Location</th>
-                            <th>Admin Name</th>
+                            <th>รหัสกำหนดการ</th>
+                            <th>วันกำหนดการ</th>
+                            <th>เวลากำหนดการ</th>
+                            <th>กรุ๊ปเลือดที่รับ</th>
+                            <th>สถานที่</th>
+                            <th>สถานะ</th>
+                            <th>รายละเอียด</th>
+                            <th>ผู้ดูแลระบบ</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -68,9 +82,9 @@ if ($tab == 'past') {
                                 echo "<td>".date('d/m/Y', strtotime($row['schedule_start_date']))." - ".date('d/m/Y', strtotime($row['schedule_end_date']))."</td>";
                                 echo "<td>".$row['schedule_start_time']." - ".$row['schedule_end_time']."</td>";
                                 echo "<td>".$row['schedule_blood_type']."</td>";
-                                echo "<td>".$row['schedule_detail']."</td>";
+                                echo "<td>".$row['location_name']."</td>";                                
                                 echo "<td>".($row['schedule_status'] == "E" ? "Enable" : ($row['schedule_status'] == "D" ? "Disable" : "Cancel"))."</td>";
-                                echo "<td>".$row['location_name']."</td>";
+                                echo "<td>".$row['schedule_detail']."</td>";
                                 echo "<td>".$row['admin_username']."</td>";
                                 echo "<td>";
                                 if ($row['admin_id'] == login_data('admin_id')) {
