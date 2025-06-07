@@ -245,7 +245,16 @@ $ABRh = null;
                                         <label for="inputUsername">Location</label>
                                     </div>
                                 </div>
-                            </div>            
+                            </div>      
+                            
+                             <div class="row mb-3">
+                                <div class="col-md-3">
+                                    <div class="form-floating mb-3 mb-md-0">
+                                        <input class="form-control" name="max" id="max" type="number" placeholder="จำนวนคนที่รับ" value="<?=$data['schedule_max']??'' ?>" />
+                                        <label for="max">จำนวนคนที่รับ</label>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="mt-4 mb-0">
                                 <div class="d-grid"><button class="btn add-btn btn-block" type="submit" href="">
                                     <?php

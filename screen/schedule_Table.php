@@ -59,6 +59,7 @@ $expired_count = $expired ? $expired[0]['expired_count'] : 0;
                             <th>รหัสกำหนดการ</th>
                             <th>วันกำหนดการ</th>
                             <th>เวลากำหนดการ</th>
+                            <th>จำนวนคนที่รับ</th>
                             <th>กรุ๊ปเลือดที่รับ</th>
                             <th>สถานที่</th>
                             <th>สถานะ</th>
@@ -82,6 +83,7 @@ $expired_count = $expired ? $expired[0]['expired_count'] : 0;
                                 echo "<td>".$row['schedule_id']."</td>";
                                 echo "<td>".date('d/m/Y', strtotime($row['schedule_start_date']))." - ".date('d/m/Y', strtotime($row['schedule_end_date']))."</td>";
                                 echo "<td>".$row['schedule_start_time']." - ".$row['schedule_end_time']."</td>";
+                                echo "<td>".$row['schedule_max']."</td>";
                                 echo "<td>".$row['schedule_blood_type']."</td>";
                                 echo "<td>".$row['location_name']."</td>";                                
                                 echo "<td>".($row['schedule_status'] == "E" ? "Enable" : ($row['schedule_status'] == "D" ? "Disable" : "Cancel"))."</td>";
