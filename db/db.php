@@ -1,6 +1,5 @@
 <?php   
 //echo phpinfo();
-// $link= mysqli_connect('it.e-tech.ac.th','web22','4409','web22_resblood');
 
 session_start();
 $link = mysqli_connect('localhost','root','','blood_donation') or die('Cannot database');
