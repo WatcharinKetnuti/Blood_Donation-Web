@@ -39,7 +39,7 @@ $schedule_result = get($sql);
 $schedule_max = $schedule_result[0]['schedule_max'];
 $sql_count = "SELECT COUNT(*) as total FROM reserve_detail rd 
               JOIN reserve r ON rd.reserve_id = r.reserve_id 
-              WHERE rd.schedule_id = '{$data['schedule_id']}' AND r.reserve_status = 'W'";
+              WHERE rd.schedule_id = '{$data['schedule_id']}' AND r.reserve_status = 'W' OR r.reserve_status = 'D'";
 $count_result = get($sql_count);
 $current_reservations = $count_result[0]['total'];
 

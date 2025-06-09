@@ -20,7 +20,7 @@ if($_POST['StartDate'] > $_POST['EndDate'])
     exit();
 }
 
-if($_POST['StartTime'] > $_POST['EndTime'] || $_POST['StartTime'] == $_POST['EndTime'])
+if($_POST['StartTime'] > $_POST['EndTime'] || $_POST['StartTime'] == $_POST['EndTime'] && $_POST['StartDate'] == $_POST['EndDate'])
 {
     $_SESSION['error'] = "เวลาเริ่มต้องน้อยกว่าเวลาสิ้นสุด";
     header('location:../screen/schedule_Form.php?id='.$_POST['id']);
