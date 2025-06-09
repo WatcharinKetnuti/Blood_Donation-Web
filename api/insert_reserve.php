@@ -17,6 +17,23 @@ if($result) {
 }
 
 
+$sql = "SELECT * FROM reserve_detail rd 
+              JOIN reserve r ON rd.reserve_id = r.reserve_id 
+              WHERE rd.schedule_id = '{$data['schedule_id']}' 
+              AND r.reserve_status = 'C' 
+              ORDER BY rd.reserve_donation_date DESC LIMIT 1";
+$last_donation = get($latset_Donation);
+if($last_donation) {
+    $last_donation_date = new DateTime($last_donation[0]['reserve_donation_date']);
+    $current_date = new DateTime();
+    $interval = $last_donation_date->diff($current_date);
+    if($interval->days < 90) {
+        echo json_encode(["success" => false, "message" => "คุณต้องรออย่างน้อย 90 วันก่อนที่จะบริจาคโลหิตอีกครั้ง"]);
+        exit();
+    }
+}
+
+
 $sql = "SELECT schedule_max FROM schedule WHERE schedule_id = '{$data['schedule_id']}'";
 $schedule_result = get($sql);
 $schedule_max = $schedule_result[0]['schedule_max'];

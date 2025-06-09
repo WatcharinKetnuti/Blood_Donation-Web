@@ -117,62 +117,6 @@ INSERT INTO `member` (`member_id`, `member_fname`, `member_lname`, `member_birth
 
 -- --------------------------------------------------------
 
---
--- Table structure for table `reserve`
---
-
-CREATE TABLE `reserve` (
-  `reserve_id` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `reserve_date` datetime NOT NULL DEFAULT current_timestamp(),
-  `reserve_status` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'W:wait, D:donated, C,cancel',
-  `member_id` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `reserve`
---
-
-INSERT INTO `reserve` (`reserve_id`, `reserve_date`, `reserve_status`, `member_id`) VALUES
-('res00000008', '2025-06-07 11:26:38', 'D', 'mem0000006'),
-('res0000001', '2025-01-10 14:30:00', 'C', 'mem0000001'),
-('res0000002', '2025-01-12 09:15:00', 'C', 'mem0000002'),
-('res0000003', '2025-01-28 16:45:00', 'C', 'mem0000003'),
-('res0000004', '2025-02-08 11:20:00', 'C', 'mem0000004'),
-('res0000005', '2025-02-10 13:30:00', 'C', 'mem0000005'),
-('res0000006', '2025-02-25 10:00:00', 'C', 'mem0000006'),
-('res0000007', '2025-02-28 15:15:00', 'C', 'mem0000007');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `reserve_detail`
---
-
-CREATE TABLE `reserve_detail` (
-  `reserve_id` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `schedule_id` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `reserve_donation_date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `reserve_detail`
---
-
-INSERT INTO `reserve_detail` (`reserve_id`, `schedule_id`, `reserve_donation_date`) VALUES
-('res0000001', 'sch000006', '2025-01-16'),
-('res0000002', 'sch000006', '2025-01-17'),
-('res0000003', 'sch000007', '2025-02-02'),
-('res0000004', 'sch000007', '2025-02-03'),
-('res0000005', 'sch000008', '2025-02-14'),
-('res0000006', 'sch000009', '2025-03-02'),
-('res0000007', 'sch000010', '2025-03-16'),
-('res00000008', 'sch000004', '2025-06-18');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `schedule`
---
 
 CREATE TABLE `schedule` (
   `schedule_id` varchar(11) NOT NULL,
@@ -205,6 +149,66 @@ INSERT INTO `schedule` (`schedule_id`, `schedule_start_date`, `schedule_end_date
 ('sch000010', '2025-03-15', '2025-03-17', '11:00:00', '19:00:00', 'A,O', 'E', 'บริจาคโลหิตช่วยเหลือสังคม ณ สยามพารากอน ร่วมกันช่วยชีวิตผู้ป่วย', 60, 'loc000008', 'admin0008'),
 ('sch000011', '2025-06-07', '2025-06-16', '11:34:00', '23:37:00', 'A', 'E', '123', 1, 'loc000001', 'admin0001'),
 ('sch000012', '2025-06-06', '2025-06-12', '11:37:00', '23:37:00', 'A', 'E', '1', 1, 'loc000001', 'admin0003');
+
+
+--
+-- Table structure for table `reserve`
+--
+
+CREATE TABLE `reserve` (
+  `reserve_id` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `reserve_date` datetime NOT NULL DEFAULT current_timestamp(),
+  `reserve_status` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'W:wait, D:donated, C,cancel',
+  `member_id` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `reserve`
+--
+
+INSERT INTO `reserve` (`reserve_id`, `reserve_date`, `reserve_status`, `member_id`) VALUES
+('res00000001', '2025-01-10 14:30:00', 'C', 'mem0000001'),
+('res00000002', '2025-01-12 09:15:00', 'C', 'mem0000002'),
+('res00000003', '2025-01-28 16:45:00', 'C', 'mem0000003'),
+('res00000004', '2025-02-08 11:20:00', 'C', 'mem0000004'),
+('res00000005', '2025-02-10 13:30:00', 'C', 'mem0000005'),
+('res00000006', '2025-02-25 10:00:00', 'C', 'mem0000006'),
+('res00000007', '2025-02-28 15:15:00', 'C', 'mem0000007'),
+('res00000008', '2025-06-07 11:26:38', 'D', 'mem0000006');
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reserve_detail`
+--
+
+CREATE TABLE `reserve_detail` (
+  `reserve_id` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `schedule_id` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `reserve_donation_date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `reserve_detail`
+--
+
+INSERT INTO `reserve_detail` (`reserve_id`, `schedule_id`, `reserve_donation_date`) VALUES
+('res00000001', 'sch000006', '2025-01-16'),
+('res00000002', 'sch000006', '2025-01-17'),
+('res00000003', 'sch000007', '2025-02-02'),
+('res00000004', 'sch000007', '2025-02-03'),
+('res00000005', 'sch000008', '2025-02-14'),
+('res00000006', 'sch000009', '2025-03-02'),
+('res00000007', 'sch000010', '2025-03-16'),
+('res00000008', 'sch000004', '2025-06-18');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `schedule`
+--
+
 
 --
 -- Indexes for dumped tables
