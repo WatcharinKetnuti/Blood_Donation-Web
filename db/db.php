@@ -1,6 +1,5 @@
 <?php   
 //echo phpinfo();
-// $link= mysqli_connect('it.e-tech.ac.th','web22','4409','web22_resblood');
 
 session_start();
 $link = mysqli_connect('localhost','root','','blood_donation') or die('Cannot database');
@@ -16,8 +15,7 @@ function get($sql)
 function set($sql)
 {
     global $link;
-    return mysqli_query($link,$sql);
-    
+    return mysqli_query($link,$sql);  
 }
 
 // function authen()
@@ -78,13 +76,14 @@ function generate_reserve_id()
     {
         $lastId = $result[0]['reserve_id'];
         $number = (int)substr($lastId, 3);
-        $number++;
+        $number +=1;
     }
     else
     {
         $number = 1;
     }
     $ID = 'res' . str_pad($number, 8, '0', STR_PAD_LEFT);
+
 
     return $ID;
 }

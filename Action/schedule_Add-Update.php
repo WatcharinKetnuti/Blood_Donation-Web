@@ -20,9 +20,16 @@ if($_POST['StartDate'] > $_POST['EndDate'])
     exit();
 }
 
-if($_POST['StartTime'] > $_POST['EndTime'] || $_POST['StartTime'] == $_POST['EndTime'])
+if($_POST['StartTime'] > $_POST['EndTime'] || $_POST['StartTime'] == $_POST['EndTime'] && $_POST['StartDate'] == $_POST['EndDate'])
 {
     $_SESSION['error'] = "เวลาเริ่มต้องน้อยกว่าเวลาสิ้นสุด";
+    header('location:../screen/schedule_Form.php?id='.$_POST['id']);
+    exit();
+}
+
+if($_POST['max'] <= 0)
+{
+    $_SESSION['error'] = "จำนวนผู้เข้าร่วมต้องมากกว่า 0";
     header('location:../screen/schedule_Form.php?id='.$_POST['id']);
     exit();
 }
@@ -32,7 +39,7 @@ if($_POST['StartTime'] > $_POST['EndTime'] || $_POST['StartTime'] == $_POST['End
 
 $blood_types = implode(',', $_POST['blood_type']);
 
-
+$currunt_admin = login_data('admin_id');
 
 if(empty($_POST['id']))
 {
@@ -50,7 +57,7 @@ if(empty($_POST['id']))
     }
     $ID = 'sch' . str_pad($number, 6, '0', STR_PAD_LEFT);
 
-    $sql = "INSERT INTO schedule (`schedule_id`, `schedule_start_date`, `schedule_end_date`, `schedule_start_time`, `schedule_end_time`, `schedule_detail`,  `schedule_blood_type`, `schedule_status`, `location_id`,`admin_id` ) VALUES 
+    $sql = "INSERT INTO schedule (`schedule_id`, `schedule_start_date`, `schedule_end_date`, `schedule_start_time`, `schedule_end_time`, `schedule_detail`,`schedule_max` ,  `schedule_blood_type`, `schedule_status`, `location_id`,`admin_id` ) VALUES 
     (
      '$ID',
      '{$_POST['StartDate']}',
@@ -58,10 +65,11 @@ if(empty($_POST['id']))
      '{$_POST['StartTime']}',
      '{$_POST['EndTime']}',
      '{$_POST['detail']}',
+     '{$_POST['max']}',
      '$blood_types',
      '{$_POST['Status']}',
      '{$_POST['Location']}',
-     'admin0001'
+     '$currunt_admin'
     )";
 }
 else
@@ -72,6 +80,7 @@ else
     `schedule_start_time`='{$_POST['StartTime']}',
     `schedule_end_time`='{$_POST['EndTime']}',
     `schedule_detail`='{$_POST['detail']}',
+    `schedule_max`='{$_POST['max']}',
     `schedule_blood_type`='$blood_types',
     `schedule_status`='{$_POST['Status']}',
     `location_id`='{$_POST['Location']}'

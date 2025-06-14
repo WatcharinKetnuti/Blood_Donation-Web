@@ -13,7 +13,7 @@ $get = get($sql);
 if($get)
 {
     $_SESSION['user']=$get[0];
-    header('location:../screen/index.php');
+    header('location:../index.php');
 }
 else
 {

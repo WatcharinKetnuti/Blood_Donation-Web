@@ -10,14 +10,7 @@ $A = null;
 $B = null;
 $AB = null;
 $O = null;
-$ARh = null;
-$ARh = null;
-$ฺBRh = null;
-$ฺBRh = null;
-$ORh = null;
-$ORh = null;
-$ABRh = null;
-$ABRh = null;
+
 ?>
 <main>
     <div class="container">
@@ -55,14 +48,7 @@ $ABRh = null;
                                 $B = in_array("B",$blood) ;
                                 $AB = in_array("AB",$blood) ;
                                 $O = in_array("O",$blood) ;
-                                $ARh = in_array("ARh+",$blood) ;
-                                $ARh = in_array("ARh-",$blood) ;
-                                $BRh = in_array("BRh+",$blood) ;
-                                $BRh = in_array("BRh-",$blood) ;
-                                $ORh = in_array("ORh+",$blood) ;
-                                $ORh = in_array("ORh-",$blood) ;
-                                $ABRh = in_array("ABRh+",$blood) ;
-                                $ABRh = in_array("ABRh-",$blood) ;
+
                             }
                             else
                             {
@@ -138,54 +124,7 @@ $ABRh = null;
                                                         <label class="form-check-label">O</label>
                                                     </div>
                                                 </li>
-                                                <li>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" name="blood_type[]" value="ARh+" <?= $ARh? 'checked' : '' ?>>
-                                                        <label class="form-check-label">ARh+</label>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" name="blood_type[]" value="BRh+" <?= $BRh? 'checked' : '' ?>>
-                                                        <label class="form-check-label">BRh+</label>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" name="blood_type[]" value="ORh+" <?= $ORh? 'checked' : '' ?>>
-                                                        <label class="form-check-label">ORh+</label>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" name="blood_type[]" value="ABRh+" <?= $ABRh? 'checked' : '' ?>>
-                                                        <label class="form-check-label">ABRh+</label>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" name="blood_type[]" value="ARh-" <?= $ARh? 'checked' : '' ?>>
-                                                        <label class="form-check-label">ARh-</label>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" name="blood_type[]" value="BRh-" <?= $BRh? 'checked' : '' ?>>
-                                                        <label class="form-check-label">BRh-</label>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" name="blood_type[]" value="ORh-" <?= $ORh? 'checked' : '' ?>>
-                                                        <label class="form-check-label">ORh-</label>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" name="blood_type[]" value="ABRh-" <?= $ABRh? 'checked' : '' ?>>
-                                                        <label class="form-check-label">ABRh-</label>
-                                                    </div>
-                                                </li>
+                                                
                                             </ul>
                                         </div>
                                         
@@ -245,7 +184,16 @@ $ABRh = null;
                                         <label for="inputUsername">Location</label>
                                     </div>
                                 </div>
-                            </div>            
+                            </div>      
+                            
+                             <div class="row mb-3">
+                                <div class="col-md-3">
+                                    <div class="form-floating mb-3 mb-md-0">
+                                        <input class="form-control" name="max" id="max" type="number" placeholder="จำนวนคนที่รับ" value="<?=$data['schedule_max']??'' ?>" />
+                                        <label for="max">จำนวนคนที่รับ</label>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="mt-4 mb-0">
                                 <div class="d-grid"><button class="btn add-btn btn-block" type="submit" href="">
                                     <?php

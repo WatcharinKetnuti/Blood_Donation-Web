@@ -36,7 +36,7 @@ $data = null;
                             <?php
                             if($id != null)
                             {
-                                $sql = "select * from Location where Location_id ='$id'";
+                                $sql = "select * from location where location_id ='$id'";
                                 $get = get($sql);
                                 $data = $get[0];
 

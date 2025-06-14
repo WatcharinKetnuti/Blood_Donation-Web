@@ -21,6 +21,13 @@ $expired_count = $expired ? $expired[0]['expired_count'] : 0;
 ?>
 
 <main>
+    <?php
+                            if(isset($_SESSION['message']))
+                            {
+                                echo "<div class='alert alert-success' role='alert'>".$_SESSION['message']."</div>";
+                                unset($_SESSION['message']);
+                            }
+                        ?>
     <div class="container-fluid px-4">
         <h1 class="mt-4">Schedule Data</h1>
         <ol class="breadcrumb mb-4">
@@ -32,21 +39,22 @@ $expired_count = $expired ? $expired[0]['expired_count'] : 0;
                 📌 มี <?= $expired_count ?> รายการที่เลยวันที่บริจาคแล้ว!
             </div>
         <?php endif; ?>
-        
+
         <!-- Tabs -->
-<div class="mb-4">
-    <div class="btn-group" role="group" aria-label="Schedule Tabs">
-        <a href="?tab=all" class="btn <?= $tab == 'all' ? 'btn-primary text-white' : 'btn-outline-primary' ?>">
-            <i class="fas fa-list"></i> all
-        </a>
-        <a href="?tab=upcoming" class="btn <?= $tab == 'upcoming' ? 'btn-success text-white' : 'btn-outline-success' ?>">
-            <i class="fas fa-calendar-plus"></i> upcoming
-        </a>
-        <a href="?tab=past" class="btn <?= $tab == 'past' ? 'btn-danger text-white' : 'btn-outline-danger' ?>">
-            <i class="fas fa-history"></i> past
-        </a>
-    </div>
-</div>
+        <div class="mb-4">
+            <div class="btn-group" role="group" aria-label="Schedule Tabs">
+                <a href="?tab=all" class="btn <?= $tab == 'all' ? 'btn-primary text-white' : 'btn-outline-primary' ?>">
+                    <i class="fas fa-list"></i> all
+                </a>
+                <a href="?tab=upcoming" class="btn <?= $tab == 'upcoming' ? 'btn-success text-white' : 'btn-outline-success' ?>">
+                    <i class="fas fa-calendar-plus"></i> upcoming
+                </a>
+                <a href="?tab=past" class="btn <?= $tab == 'past' ? 'btn-danger text-white' : 'btn-outline-danger' ?>">
+                    <i class="fas fa-history"></i> past
+                </a>
+            </div>
+        </div>
+        
 
         <!-- ตารางข้อมูล -->
         <div class="card mb-4">
@@ -58,11 +66,12 @@ $expired_count = $expired ? $expired[0]['expired_count'] : 0;
                             <th>รหัสกำหนดการ</th>
                             <th>วันกำหนดการ</th>
                             <th>เวลากำหนดการ</th>
+                            <th>จำนวนคนที่รับ</th>
                             <th>กรุ๊ปเลือดที่รับ</th>
-                            <th>สถานที่กำหนดการ</th>
-                            <th>สถานะกำหนดการ</th>
-                            <th>รายละเอียดกำหนดการ</th>
-                            <th>ชื่อผู้ดูแลระบบ</th>
+                            <th>สถานที่</th>
+                            <th>สถานะ</th>
+                            <th>รายละเอียด</th>
+                            <th>ผู้ดูแลระบบ</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -81,6 +90,7 @@ $expired_count = $expired ? $expired[0]['expired_count'] : 0;
                                 echo "<td>".$row['schedule_id']."</td>";
                                 echo "<td>".date('d/m/Y', strtotime($row['schedule_start_date']))." - ".date('d/m/Y', strtotime($row['schedule_end_date']))."</td>";
                                 echo "<td>".$row['schedule_start_time']." - ".$row['schedule_end_time']."</td>";
+                                echo "<td>".$row['schedule_max']."</td>";
                                 echo "<td>".$row['schedule_blood_type']."</td>";
                                 echo "<td>".$row['location_name']."</td>";                                
                                 echo "<td>".($row['schedule_status'] == "E" ? "Enable" : ($row['schedule_status'] == "D" ? "Disable" : "Cancel"))."</td>";
